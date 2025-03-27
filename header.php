@@ -51,6 +51,7 @@
               )); ?>
               <!-- Display the Login and Sign Up buttons -->
               <a href="<?php echo site_url('index.php/login'); ?>" class="btn btn--small btn--orange float-left push-right">Login</a>
+
               <a href="<?php echo site_url('index.php/registration'); ?>" class="btn btn--small btn--dark-orange float-left">Sign Up</a>
 
             <?php } ?>
