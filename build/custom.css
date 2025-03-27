@@ -1,0 +1,840 @@
+body {
+	color: #333;
+	font-family: 'Bebas Neue', sans-serif;
+	overflow-x: hidden;
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+html {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+/* END */
+/* 
+DASHBOARD
+*/
+
+/* Base container styling */
+.dashboard-container {
+	max-width: 1000px; /* Limits the maximum width of the dashboard */
+	margin: 50px auto; /* Centers the container with top and bottom margin */
+	padding: 20px; /* Adds spacing inside the container */
+	background: #f8f9fa; /* Light gray background */
+	border-radius: 8px; /* Rounds the corners for a softer look */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+	text-align: center; /* Centers text inside the container */
+}
+
+/* Heading */
+.dashboard-container h1 {
+	font-size: 2rem; /* Sets a large font size for headings */
+	color: #0068c2; /* Uses the primary blue color */
+	margin-bottom: 15px; /* Adds space below the heading */
+}
+
+/* Paragraph */
+.dashboard-container p {
+	font-size: 1.1rem; /* Slightly larger text for readability */
+	color: #333; /* Dark gray text for contrast */
+	margin-bottom: 20px; /* Adds space below the paragraph */
+}
+
+/* Dashboard menu */
+.dashboard-menu {
+	display: flex; /* Uses flexbox for layout */
+	justify-content: center; /* Centers menu items horizontally */
+	gap: 15px; /* Adds spacing between menu items */
+	margin-top: 20px; /* Adds space above the menu */
+}
+
+/* Dashboard menu buttons */
+.dashboard-menu a {
+	display: inline-block; /* Makes buttons behave like block elements */
+	padding: 10px 20px; /* Adds padding for a clickable area */
+	background: #0068c2; /* Sets the primary blue background */
+	color: white; /* White text for contrast */
+	text-decoration: none; /* Removes underline from links */
+	border-radius: 5px; /* Slightly rounded corners */
+	transition: background 0.3s; /* Smooth transition effect */
+}
+
+/* Hover effect */
+.dashboard-menu a:hover {
+	background: #004e94; /* Darker blue on hover */
+}
+/* 
+Mobile DASHBOARD
+*/
+@media (max-width: 768px) {
+	.dashboard-container {
+		max-width: 95%; /* Makes the container more responsive */
+		margin: 20px auto; /* Reduces margin for smaller screens */
+		padding: 15px; /* Adjusts padding for better spacing */
+	}
+
+	.dashboard-container h1 {
+		font-size: 1.5rem; /* Reduces heading size for mobile */
+	}
+
+	.dashboard-container p {
+		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
+	}
+
+	.dashboard-menu {
+		flex-direction: column; /* Stacks menu items vertically */
+		align-items: center; /* Centers menu items */
+	}
+
+	.dashboard-menu a {
+		width: 100%; /* Makes buttons full-width for better usability */
+		text-align: center; /* Centers text inside buttons */
+		padding: 12px; /* Adjusts padding for touch-friendly buttons */
+	}
+}
+/* END */
+/* 
+LOGIN 
+*/
+/* Login Container */
+.login-container {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 30px;
+	background-color: #000;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+
+/* Site Logo */
+.site_logo {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.site_logo img {
+	max-width: 150px;
+}
+
+/* School Logo Text (fallback if no logo exists) */
+.school-logo-text {
+	font-size: 28px;
+	text-align: center;
+	color: #0068c2;
+	margin-bottom: 20px;
+}
+
+.school-logo-text a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.school-logo-text a:hover {
+	text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+	color: red;
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* Custom Login Form */
+.custom-login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* Form Labels */
+.custom-login-form label {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+/* Input Fields */
+.custom-login-form input[type='text'],
+.custom-login-form input[type='password'] {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease;
+}
+
+.custom-login-form input[type='text']:focus,
+.custom-login-form input[type='password']:focus {
+	border-color: #0068c2;
+	outline: none;
+}
+
+/* Toggle Password Button */
+.custom-login-form button[aria-label='Show/Hide password'] {
+	background-color: #f1f1f1;
+	border: 1px solid #ccc;
+	padding: 8px 12px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+	align-self: flex-start;
+}
+
+.custom-login-form button[aria-label='Show/Hide password']:hover {
+	background-color: #e0e0e0;
+}
+
+/* Checkbox Styling */
+.custom-login-form input[type='checkbox'] {
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+/* Submit Button */
+.custom-login-form input[type='submit'] {
+	background-color: #0068c2;
+	color: #fff;
+	padding: 14px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.custom-login-form input[type='submit']:hover {
+	background-color: #0055a0;
+}
+
+/* Forgot Password and Registration Links */
+.login-container p {
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.login-container a {
+	color: #0068c2;
+	text-decoration: none;
+}
+
+.login-container a:hover {
+	text-decoration: underline;
+}
+
+/* Float Helper Class (if needed) */
+/* .float-left {
+	float: left;
+} */
+
+/* Clear Floats */
+.login-container::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* 
+MOBILE LOGIN
+*/
+@media (max-width: 768px) {
+	.login-container {
+		padding: 20px;
+		background-color: white;
+	}
+
+	.custom-login-form input[type='text'],
+	.custom-login-form input[type='password'],
+	.custom-login-form input[type='submit'] {
+		padding: 14px;
+		font-size: 18px;
+	}
+
+	.login-container p {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.login-container {
+		width: 100%;
+		padding: 15px;
+	}
+
+	.school-logo-text {
+		font-size: 24px;
+	}
+
+	.custom-login-form input[type='text'],
+	.custom-login-form input[type='password'],
+	.custom-login-form input[type='submit'] {
+		padding: 16px;
+		font-size: 18px;
+	}
+
+	.login-container p {
+		font-size: 12px;
+	}
+}
+
+/* END */
+
+/* 
+PROFILE PAGE 
+*/
+
+/* General Styles */
+body {
+	/* Set the font family for the page */
+	/* font-family: Arial, sans-serif; */
+	/* Set the background color of the page */
+	background-color: #f4f4f4;
+	/* Set the text color for the page */
+	color: #333;
+	/* Remove default margin and padding */
+	margin: 0;
+	padding: 0;
+}
+
+/* Container Styles */
+.container {
+	/* Set container width to 90% of the viewport width */
+	width: 90%;
+	/* Max width of the container is set to 1200px */
+	max-width: 1200px;
+	/* Center the container horizontally */
+	margin: 0 auto;
+	/* Add padding inside the container */
+	padding: 20px;
+}
+
+/* Profile Page Styles */
+.profile-container {
+	/* Set the background color to white */
+	background-color: #fff;
+	/* Add padding inside the profile container */
+	padding: 20px;
+	/* Rounded corners for the profile container */
+	border-radius: 8px;
+	/* Add subtle box shadow around the profile container */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+	/* Use flexbox to align the profile header elements */
+	display: flex;
+	/* Vertically center the items in the header */
+	align-items: center;
+	/* Space out the header items with margin */
+	justify-content: center;
+	/* Add space at the bottom of the header */
+	margin-bottom: 20px;
+}
+
+.profile-picture {
+	/* Center the profile picture */
+	text-align: center;
+	/* Add space to the right of the profile picture */
+	margin-right: 20px;
+}
+
+.profile-picture img {
+	/* Set the width and height of the profile image */
+	width: 120px;
+	height: 120px;
+	/* Make the profile picture circular */
+	border-radius: 50%;
+	/* Ensure the image fills the container without distortion */
+	object-fit: cover;
+	/* Add a blue border around the profile picture */
+	border: 2px solid #0068c2;
+}
+
+/* Profile Information */
+h3 {
+	/* Set font size for profile headings */
+	font-size: 1.5rem;
+	/* Add margin below the heading */
+	margin-bottom: 10px;
+	/* Set the color to the blue theme */
+	color: #0068c2;
+}
+
+p {
+	/* Set font size for profile paragraphs */
+	font-size: 1rem;
+	/* Add margin below the paragraph */
+	margin-bottom: 8px;
+}
+
+label {
+	/* Make the label text bold */
+	font-weight: bold;
+	/* Display the label as a block element */
+	display: block;
+	/* Add space above and below the label */
+	margin: 8px 0;
+}
+
+input[type='text'],
+textarea,
+select,
+input[type='file'] {
+	/* Make inputs, selects, and text areas take full width */
+	width: 100%;
+	/* Add padding inside the fields */
+	padding: 10px;
+	/* Add margin below each field */
+	margin-bottom: 15px;
+	/* Add border around the fields */
+	border: 1px solid #ccc;
+	/* Add rounded corners to the fields */
+	border-radius: 4px;
+	/* Ensure padding and border are included in the width */
+	box-sizing: border-box;
+}
+
+textarea {
+	/* Allow the text area to resize vertically */
+	resize: vertical;
+	/* Set minimum height for the text area */
+	min-height: 150px;
+}
+
+input[type='submit'] {
+	/* Set background color for submit button */
+	background-color: #0068c2;
+	/* Set text color for submit button */
+	color: white;
+	/* Remove default border */
+	border: none;
+	/* Add padding inside the submit button */
+	padding: 12px 20px;
+	/* Add rounded corners to the submit button */
+	border-radius: 4px;
+	/* Change the cursor to a pointer on hover */
+	cursor: pointer;
+	/* Set font size for the submit button */
+	font-size: 1rem;
+}
+
+input[type='submit']:hover {
+	/* Change the background color on hover */
+	background-color: #0056a3;
+}
+
+/* Edit Mode Button */
+a {
+	/* Set color for anchor links */
+	color: #0068c2;
+	/* Remove underline from links */
+	text-decoration: none;
+}
+
+a:hover {
+	/* Add underline to links on hover */
+	text-decoration: underline;
+}
+
+/* Mobile Styles (Responsive) */
+@media (max-width: 767px) {
+	.profile-container {
+		/* Reduce padding in the profile container for mobile */
+		padding: 15px;
+	}
+
+	.profile-header {
+		/* Stack profile header elements vertically on mobile */
+		flex-direction: column;
+		/* Center text for profile header */
+		text-align: center;
+	}
+
+	.profile-picture img {
+		/* Reduce size of profile picture on mobile */
+		width: 100px;
+		height: 100px;
+	}
+
+	h3 {
+		/* Decrease font size for mobile view */
+		font-size: 1.3rem;
+	}
+
+	p,
+	label {
+		/* Decrease font size for mobile view */
+		font-size: 0.9rem;
+	}
+
+	input[type='text'],
+	textarea,
+	select,
+	input[type='file'] {
+		/* Reduce padding for inputs on mobile */
+		padding: 8px;
+	}
+
+	input[type='submit'] {
+		/* Make submit button full width on mobile */
+		width: 100%;
+		/* Adjust padding for the submit button */
+		padding: 12px 0;
+	}
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+	.profile-header {
+		/* Set header elements to align horizontally on desktop */
+		flex-direction: row;
+		/* Align header items to the left */
+		justify-content: flex-start;
+	}
+
+	.profile-container {
+		/* Add more padding inside the profile container on desktop */
+		padding: 25px;
+	}
+
+	.profile-picture {
+		/* Align the profile picture to the left */
+		text-align: left;
+		/* Add more space to the right of the profile picture */
+		margin-right: 30px;
+	}
+
+	.profile-picture img {
+		/* Increase profile picture size on desktop */
+		width: 150px;
+		height: 150px;
+	}
+
+	h3 {
+		/* Increase font size for profile headings on desktop */
+		font-size: 1.6rem;
+	}
+
+	p {
+		/* Increase font size for paragraphs on desktop */
+		font-size: 1.1rem;
+	}
+
+	input[type='text'],
+	textarea,
+	select,
+	input[type='file'] {
+		/* Add more padding for inputs on desktop */
+		padding: 12px;
+	}
+
+	input[type='submit'] {
+		/* Add extra padding to submit button on desktop */
+		padding: 14px 22px;
+	}
+}
+/* END */
+/* 
+CONTACT PAGE 
+*/
+/* 
+  Targeting the label of a form field within WPForms.
+  This ensures the text color of the label is set to white, 
+  overriding any other color settings due to the use of !important.
+*/
+.wpforms-field-label {
+	color: white !important;
+}
+/* END */
+/* 
+REGISTRATION PAGE 
+*/
+/* Container for the registration form */
+.registration-container {
+	max-width: 600px; /* Limits the form's width to 600px */
+	margin: 0 auto; /* Centers the form horizontally */
+	padding: 20px; /* Adds padding around the form */
+	background-color: #fff; /* Sets the background color to white */
+	border-radius: 8px; /* Rounds the corners of the container */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container */
+}
+
+/* Styling for the main heading (h2) */
+h2 {
+	text-align: center; /* Centers the heading text */
+	color: #0068c2; /* Sets the text color to blue */
+	margin-bottom: 20px; /* Adds space below the heading */
+}
+
+/* Styling for labels inside the custom registration form */
+.custom-registration-form label {
+	display: block; /* Makes the label display as a block element */
+	font-weight: bold; /* Makes the label text bold */
+	margin-bottom: 8px; /* Adds space below the label */
+	color: #333; /* Sets the label text color to dark gray */
+}
+
+/* Styling for input fields and select elements inside the custom registration form */
+.custom-registration-form input,
+.custom-registration-form select {
+	width: 100%; /* Makes inputs and selects take up the full width of the container */
+	padding: 12px; /* Adds padding inside the fields */
+	margin-bottom: 15px; /* Adds space below the fields */
+	border: 1px solid #ccc; /* Adds a light gray border around the fields */
+	border-radius: 4px; /* Rounds the corners of the fields */
+	box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+/* Styling specific to text, email, password input fields and select elements */
+.custom-registration-form input[type='password'],
+.custom-registration-form input[type='text'],
+.custom-registration-form input[type='email'],
+.custom-registration-form select {
+	font-size: 16px; /* Sets the font size to 16px */
+}
+
+/* Styling for the submit button */
+.custom-registration-form input[type='submit'] {
+	background-color: #0068c2; /* Sets the background color to blue */
+	color: white; /* Sets the text color to white */
+	border: none; /* Removes the border */
+	cursor: pointer; /* Changes the cursor to a pointer on hover */
+	font-size: 16px; /* Sets the font size to 16px */
+	padding: 12px; /* Adds padding inside the button */
+	border-radius: 4px; /* Rounds the corners of the button */
+	width: 100%; /* Makes the button take up the full width of the container */
+}
+
+/* Hover effect for the submit button */
+.custom-registration-form input[type='submit']:hover {
+	background-color: #0051a2; /* Changes the background color to a darker blue on hover */
+}
+
+/* Styling for error and success messages */
+p {
+	text-align: center; /* Centers the message text */
+	font-size: 14px; /* Sets the font size to 14px */
+}
+
+/* Error messages (red color) */
+p[style*='color:red'] {
+	color: red; /* Sets the text color to red */
+}
+
+/* Success messages (green color) */
+p[style*='color:green'] {
+	color: green; /* Sets the text color to green */
+}
+
+/* Responsive styles for devices with a screen width of 768px or less */
+@media (max-width: 768px) {
+	.registration-container {
+		padding: 15px; /* Reduces padding for smaller screens */
+	}
+
+	.generic-content h2 {
+		font-size: 28px !important; /* Reduces font size of the heading */
+	}
+
+	.custom-registration-form label,
+	.custom-registration-form input,
+	.custom-registration-form select {
+		font-size: 14px; /* Reduces font size of labels, inputs, and selects */
+	}
+
+	.custom-registration-form input[type='submit'] {
+		font-size: 14px; /* Reduces font size of the submit button */
+		padding: 10px; /* Reduces padding of the submit button */
+	}
+}
+
+/* Responsive styles for devices with a screen width of 480px or less */
+@media (max-width: 480px) {
+	.registration-container {
+		padding: 10px; /* Further reduces padding for smaller screens */
+	}
+
+	.custom-registration-form label,
+	.custom-registration-form input,
+	.custom-registration-form select {
+		font-size: 12px; /* Further reduces font size of labels, inputs, and selects */
+	}
+
+	.custom-registration-form input[type='submit'] {
+		font-size: 12px; /* Further reduces font size of the submit button */
+		padding: 10px; /* Further reduces padding of the submit button */
+	}
+}
+/* END */
+/* 
+REGISTRATION SUCCESS 
+*/
+/* This styles the container that shows the registration success message */
+.registration-success-container {
+	text-align: center; /* Centers the text inside the box */
+	max-width: 600px; /* Sets a maximum width of 600 pixels */
+	margin: 50px auto; /* Adds space around the box (50px top/bottom, auto centers it) */
+	padding: 20px; /* Adds space inside the box for better spacing */
+	border: 1px solid #ddd; /* Gives the box a light gray border */
+	border-radius: 8px; /* Rounds the corners of the box slightly */
+	background: #f9f9f9; /* Sets a light gray background color */
+	min-height: 63vh;
+}
+
+/* This styles the button */
+.button {
+	display: inline-block; /* Makes the button behave like a block but fit its content */
+	padding: 10px 20px; /* Adds space inside the button (10px top/bottom, 20px left/right) */
+	margin: 10px; /* Adds space around the button */
+	background: #0068c2; /* Sets the button color to blue */
+	color: #fff; /* Makes the text color white */
+	text-decoration: none; /* Removes the underline from links */
+	border-radius: 5px; /* Rounds the button's corners slightly */
+}
+
+/* This styles the button when the user hovers over it */
+.button:hover {
+	background: #0054a6; /* Changes the button color to a darker blue */
+}
+/* END */
+/* my media */
+@media only screen and (max-width: 768px) {
+	.site-footer__col-four {
+		padding-top: 0;
+		margin: 0 auto;
+	}
+	/* .site-footer__inner {
+		border-top: none;
+		padding-top: 0;
+	} */
+	.footer_site_logo {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.social-icons-list {
+		display: block;
+	}
+}
+
+/* Visible on desktops and tablets */
+@media (min-width: 768px) {
+	.hide {
+		display: block;
+	}
+}
+
+/*
+EVENT SUMMARY
+*/
+/* 
+Mobile EVENT SUMMARY  
+*/
+/* Media query for screens with a maximum width of 768px (tablets and below) */
+@media only screen and (max-width: 768px) {
+	/* Styles for the event summary container */
+	.event-summary {
+		display: block; /* Ensures the event summary is displayed as a block */
+		padding: 15px; /* Adds padding inside the container */
+		margin-bottom: 20px; /* Adds margin below the container */
+		border: 1px solid #e0e0e0; /* Adds a light gray border around the container */
+		background-color: #fff; /* Sets the background color to white */
+		border-radius: 8px; /* Rounds the corners of the border */
+	}
+
+	/* Styles for the content inside the event summary */
+	.event-summary__content {
+		text-align: center; /* Centers the content inside the container */
+	}
+
+	/* Styles for the event title */
+	.event-summary__title {
+		font-size: 1.2em; /* Increases the font size of the title */
+		margin-bottom: 10px; /* Adds space below the title */
+	}
+
+	/* Styles for the event date */
+	.event-summary__date {
+		display: block; /* Ensures the date is displayed as a block element */
+		margin-top: 10px; /* Adds space above the date */
+		font-size: 1.2em; /* Increases the font size */
+		font-weight: bold; /* Makes the date bold */
+		color: #0068c2; /* Sets the color of the date to match the branding */
+	}
+
+	/* Styles for the month and day of the event date */
+	.event-summary__month,
+	.event-summary__day {
+		display: block; /* Ensures month and day are displayed on separate lines */
+		font-size: 1em; /* Sets a default font size */
+	}
+
+	/* Styles specifically for the month */
+	.event-summary__month {
+		font-size: 1.4em; /* Increases the font size for the month */
+		color: #333; /* Sets the color to a dark gray */
+	}
+
+	/* Styles specifically for the day */
+	.event-summary__day {
+		font-size: 1.8em; /* Increases the font size for the day */
+		font-weight: bold; /* Makes the day bold */
+		color: #0068c2; /* Sets the color to match the branding */
+	}
+
+	/* Styles for paragraphs inside the event content */
+	.event-summary__content p {
+		font-size: 0.9em; /* Sets the font size to 0.9em */
+		line-height: 1.5; /* Increases the line height for better readability */
+		margin-bottom: 10px; /* Adds space below paragraphs */
+	}
+
+	/* Styles for links inside the event content */
+	.event-summary__content a {
+		font-size: 1em; /* Sets the font size for links */
+		color: #0068c2; /* Sets the color of the links to match the branding */
+		text-decoration: none; /* Removes underline from links */
+	}
+
+	/* Styles for links when hovered */
+	.event-summary__content a:hover {
+		text-decoration: underline; /* Underlines the link when hovered */
+	}
+}
+
+/* Additional styles for smaller screens (max-width: 480px, mobile devices) */
+@media only screen and (max-width: 480px) {
+	/* Adjusts the font size for the event title */
+	.event-summary__title {
+		font-size: 1em; /* Reduces the font size */
+		margin-bottom: 8px; /* Reduces the space below the title */
+	}
+
+	/* Adjusts the font size for paragraphs */
+	.event-summary__content p {
+		font-size: 0.85em; /* Reduces the font size */
+		margin-bottom: 8px; /* Reduces the space below paragraphs */
+	}
+
+	/* Adjusts the font size for the event date */
+	.event-summary__date {
+		font-size: 1em; /* Reduces the font size */
+	}
+
+	/* Adjusts the font size for the month and day */
+	.event-summary__month,
+	.event-summary__day {
+		font-size: 0.9em; /* Reduces the font size */
+	}
+}
+
+/* END */
