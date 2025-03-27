@@ -1,5 +1,5 @@
 <?php
-
+// Template Name: Custom Welcome page
 get_header();
 
 // Start the WordPress loop to process posts/pages
