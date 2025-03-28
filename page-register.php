@@ -62,15 +62,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
     $verification_code = wp_generate_password(20, false);
     update_user_meta($user_id, 'email_verification_code', $verification_code);
 
-    // $verification_link = home_url("/registration-success/?code=$verification_code&user_id=$user_id");
-    $verification_link = site_url("index.php/registration-success/?code=$verification_code&user_id=$user_id");
+    $verification_link = site_url("index.php/email-verification/?code=$verification_code&user_id=$user_id");
 
     $message = "<p>Thank you for registering. Please verify your email by clicking the link below:</p>";
     $message .= "<p><a href='$verification_link'>Verify Email</a></p>";
     $headers = ['Content-Type: text/html; charset=UTF-8'];
     wp_mail($email, "Verify Your Email", $message, $headers);
 
-    wp_safe_redirect(add_query_arg('registration_success', 'pending_verification', get_permalink()));
+    wp_safe_redirect(site_url('index.php/registration-pending-verification/'));
     exit;
   } else {
     wp_safe_redirect(add_query_arg('registration_errors', urlencode(json_encode([$user_id->get_error_message()])), get_permalink()));
@@ -101,8 +100,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
     <?php wp_nonce_field('register_user_action', 'rgenmusic_register_nonce'); ?>
     <label for="username">Username:</label>
     <input type="text" name="username" required>
+
     <label for="user_email">Email:</label>
     <input type="email" name="user_email" required>
+
     <label for="password">Password:</label>
     <input type="password" name="password" required>
     <label for="password_confirm">Confirm Password:</label>
