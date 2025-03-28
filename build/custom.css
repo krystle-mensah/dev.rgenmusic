@@ -634,7 +634,7 @@ p[style*='color:red'] {
 p[style*='color:green'] {
 	color: green; /* Sets the text color to green */
 }
-
+/* Mobile registration */
 /* Responsive styles for devices with a screen width of 768px or less */
 @media (max-width: 768px) {
 	.registration-container {
@@ -673,6 +673,12 @@ p[style*='color:green'] {
 		font-size: 12px; /* Further reduces font size of the submit button */
 		padding: 10px; /* Further reduces padding of the submit button */
 	}
+}
+
+.registration-error-message {
+	color: red;
+	font-size: 0.9em;
+	margin-top: 5px;
 }
 /* END */
 /* 
