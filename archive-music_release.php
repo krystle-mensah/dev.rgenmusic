@@ -37,6 +37,7 @@ get_header(); ?>
   <?php }
   echo paginate_links();
   ?>
+  <p>Looking for a recap of past music releases? <a href="<?php site_url('index.php/past-music-releases'); ?>">check out our past music releases archive</a>. </p>
 </div>
 
 <?php get_footer();
