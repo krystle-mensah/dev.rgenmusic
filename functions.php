@@ -105,3 +105,10 @@ function ourLoginTitle()
   // Returns the site's name (from WordPress settings) as the title for the login logo.
   return get_bloginfo('name');
 }
+
+function custom_rewrite_rules()
+{
+  add_rewrite_rule('^music-releases/?$', 'index.php?post_type=music_release', 'top');
+  // Add other rewrite rules as needed
+}
+add_action('init', 'custom_rewrite_rules');
