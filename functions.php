@@ -12,8 +12,6 @@ function rgenmusic_features()
     'headerMenuLoggedIn' => 'Header Menu (Logged In)', // Menu for logged-in users
     'headerMenuLoggedOut' => 'Header Menu (Logged Out)', // Menu for logged-out users
   ));
-  // Enables support for the title tag, allowing WordPress to manage the document's <title> element dynamically.
-  // This is essential for proper SEO and avoids the need to manually set the <title> tag in the theme's header.
   add_theme_support('title-tag');
   // Add theme support for custom logo
   add_theme_support('custom-logo', array(
@@ -22,6 +20,10 @@ function rgenmusic_features()
     'flex-width' => true,
     'flex-height' => true,
   ));
+  add_theme_support('menus');
+
+  // Flush rewrite rules on theme switch
+  flush_rewrite_rules();
 }
 // Hook into the 'after_setup_theme' action to initialize theme features
 add_action('after_setup_theme', 'rgenmusic_features');
@@ -106,9 +108,20 @@ function ourLoginTitle()
   return get_bloginfo('name');
 }
 
-function custom_rewrite_rules()
-{
-  add_rewrite_rule('^music-releases/?$', 'index.php?post_type=music_release', 'top');
-  // Add other rewrite rules as needed
-}
-add_action('init', 'custom_rewrite_rules');
+// Function to add custom rewrite rules
+// function custom_rewrite_rules()
+// {
+//   // Adds a rewrite rule to make "music-releases/" point to the 'music_release' post type archive page
+//   add_rewrite_rule('^music-releases/?$', 'index.php?post_type=music_release', 'top');
+
+//   // Add other rewrite rules as needed
+// }
+
+// // Hook the function into WordPress initialization
+// add_action('init', 'custom_rewrite_rules');
+//This ensures that when you activate your theme, the rewrite rules are refreshed.
+// function rgenmusic_flush_rewrite_rules()
+// {
+//   flush_rewrite_rules();
+// }
+// register_activation_hook(__FILE__, 'rgenmusic_flush_rewrite_rules');

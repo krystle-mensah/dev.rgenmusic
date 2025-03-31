@@ -142,6 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
 
     <input type="submit" name="register_user" value="Create Account">
   </form>
+  <p>I agree to the (terms and conditions link) and <a href="<?php echo site_url('/privacy-policy'); ?>">Privacy policy</a>.</p>
 </div>
 <?php
 ob_end_flush();
