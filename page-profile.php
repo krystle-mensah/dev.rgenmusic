@@ -59,79 +59,105 @@ $profile_picture_url = $profile_picture_id ? wp_get_attachment_url($profile_pict
 $first_name = get_user_meta($user_id, 'first_name', true);
 $last_name = get_user_meta($user_id, 'last_name', true);
 $nickname = get_user_meta($user_id, 'nickname', true);
-?>
-<div class="container container--narrow page-section">
-  <div class="profile-container">
-    <?php if ($user_id) : ?>
-      <div class="profile-header">
-        <div class="profile-picture">
-          <?php if ($profile_picture_url) : ?>
-            <img src="<?php echo esc_url($profile_picture_url); ?>" alt="Profile Picture" class="profile-pic">
-          <?php endif; ?>
-        </div>
+
+while (have_posts()) {
+
+  the_post(); ?>
+
+  <div class="page-banner">
+
+    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/pageBanner.jpg') ?>);"></div>
+    <div class="page-banner__content container container--narrow">
+      <h1 class="page-banner__title"><?php the_title(); ?></h1>
+      <div class="page-banner__intro">
+        <p>THIS PAGE IS POWERED BY PAGE.PHP</p>
       </div>
+    </div>
+  </div>
 
-      <!-- Edit Button -->
-      <?php if (isset($_GET['edit']) && $_GET['edit'] == 'true') : ?>
-        <!-- Edit Form -->
-        <form method="post" enctype="multipart/form-data">
-          <!-- Add Nonce Field -->
-          <?php wp_nonce_field('update_profile_nonce', 'update_profile_nonce_field'); ?>
+  <div class="container container--narrow page-section">
+    <div class="profile-container">
+      <?php if ($user_id) : ?>
+        <div class="profile-header">
+          <div class="profile-picture">
+            <?php if ($profile_picture_url) : ?>
+              <img src="<?php echo esc_url($profile_picture_url); ?>" alt="Profile Picture" class="profile-pic">
+            <?php endif; ?>
+          </div>
+        </div>
 
-          <!-- Name Fields -->
+        <!-- Edit Button -->
+        <?php if (isset($_GET['edit']) && $_GET['edit'] == 'true') : ?>
+          <!-- Edit Form -->
+          <form method="post" enctype="multipart/form-data">
+            <!-- Add Nonce Field -->
+            <?php wp_nonce_field('update_profile_nonce', 'update_profile_nonce_field'); ?>
+
+            <!-- Name Fields -->
+            <h3>Personal Information</h3>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" value="<?php echo esc_attr($first_name); ?>">
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" value="<?php echo esc_attr($last_name); ?>">
+
+            <label for="nickname">Nickname:</label>
+            <input type="text" name="nickname" value="<?php echo esc_attr($nickname); ?>">
+
+            <!-- Bio Section -->
+            <h3>About Me</h3>
+            <label for="artist_bio">Bio:</label>
+            <textarea name="artist_bio"><?php echo esc_textarea($artist_bio); ?></textarea>
+
+            <!-- Artist Type Section -->
+            <label for="artist_type">Artist Type:</label>
+            <select name="artist_type">
+              <option value="singer" <?php selected($artist_type, 'singer'); ?>>Singer</option>
+              <option value="producer" <?php selected($artist_type, 'producer'); ?>>Producer</option>
+              <option value="instrumentalist" <?php selected($artist_type, 'instrumentalist'); ?>>Instrumentalist</option>
+              <option value="dj" <?php selected($artist_type, 'dj'); ?>>DJ</option>
+            </select>
+
+            <!-- Profile Picture Section -->
+            <label for="profile_picture">Profile Picture:</label>
+            <input type="file" name="profile_picture">
+            <?php if ($profile_picture_url) : ?>
+              <img src="<?php echo esc_url($profile_picture_url); ?>" alt="Profile Picture" width="100">
+            <?php endif; ?>
+
+            <input type="submit" name="update_profile" value="Update Profile">
+          </form>
+        <?php else : ?>
+          <!-- Profile View Mode -->
+          <p><a href="?edit=true">Edit Profile</a></p>
           <h3>Personal Information</h3>
-          <label for="first_name">First Name:</label>
-          <input type="text" name="first_name" value="<?php echo esc_attr($first_name); ?>">
+          <p><strong>First Name:</strong> <?php echo esc_html($first_name); ?></p>
+          <p><strong>Last Name:</strong> <?php echo esc_html($last_name); ?></p>
+          <p><strong>Nickname:</strong> <?php echo esc_html($nickname); ?></p>
 
-          <label for="last_name">Last Name:</label>
-          <input type="text" name="last_name" value="<?php echo esc_attr($last_name); ?>">
-
-          <label for="nickname">Nickname:</label>
-          <input type="text" name="nickname" value="<?php echo esc_attr($nickname); ?>">
-
-          <!-- Bio Section -->
           <h3>About Me</h3>
-          <label for="artist_bio">Bio:</label>
-          <textarea name="artist_bio"><?php echo esc_textarea($artist_bio); ?></textarea>
-
-          <!-- Artist Type Section -->
-          <label for="artist_type">Artist Type:</label>
-          <select name="artist_type">
-            <option value="singer" <?php selected($artist_type, 'singer'); ?>>Singer</option>
-            <option value="producer" <?php selected($artist_type, 'producer'); ?>>Producer</option>
-            <option value="instrumentalist" <?php selected($artist_type, 'instrumentalist'); ?>>Instrumentalist</option>
-            <option value="dj" <?php selected($artist_type, 'dj'); ?>>DJ</option>
-          </select>
-
-          <!-- Profile Picture Section -->
-          <label for="profile_picture">Profile Picture:</label>
-          <input type="file" name="profile_picture">
+          <p><?php echo esc_textarea($artist_bio); ?></p>
+          <h3>Artist Type</h3>
+          <p><?php echo esc_html($artist_type); ?></p>
           <?php if ($profile_picture_url) : ?>
+            <h3>Profile Picture</h3>
             <img src="<?php echo esc_url($profile_picture_url); ?>" alt="Profile Picture" width="100">
           <?php endif; ?>
-
-          <input type="submit" name="update_profile" value="Update Profile">
-        </form>
-      <?php else : ?>
-        <!-- Profile View Mode -->
-        <p><a href="?edit=true">Edit Profile</a></p>
-        <h3>Personal Information</h3>
-        <p><strong>First Name:</strong> <?php echo esc_html($first_name); ?></p>
-        <p><strong>Last Name:</strong> <?php echo esc_html($last_name); ?></p>
-        <p><strong>Nickname:</strong> <?php echo esc_html($nickname); ?></p>
-
-        <h3>About Me</h3>
-        <p><?php echo esc_textarea($artist_bio); ?></p>
-        <h3>Artist Type</h3>
-        <p><?php echo esc_html($artist_type); ?></p>
-        <?php if ($profile_picture_url) : ?>
-          <h3>Profile Picture</h3>
-          <img src="<?php echo esc_url($profile_picture_url); ?>" alt="Profile Picture" width="100">
         <?php endif; ?>
-      <?php endif; ?>
 
-    <?php else : ?>
-      <p>Please <a href="<?php echo wp_login_url(); ?>">log in</a> to access your profile.</p>
-    <?php endif; ?>
+      <?php else : ?>
+        <p>Please <a href="<?php echo wp_login_url(); ?>">log in</a> to access your profile.</p>
+      <?php endif; ?>
+    </div>
+
+    <div class="generic-content">
+      <?php the_content(); ?>
+    </div>
+
   </div>
-</div>
+
+<?php }
+
+get_footer();
+
+?>

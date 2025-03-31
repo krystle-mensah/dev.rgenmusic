@@ -84,65 +84,80 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
 }
 
 ?>
+<!-- Page Banner Section -->
+<div class="page-banner">
 
-<div class="registration-info">
-  <p>Please fill in the following fields to create your account:</p>
-  <ul>
-    <li><strong>Username:</strong> Choose a unique username. It can contain letters, numbers, underscores, and periods.</li>
-    <li><strong>Email:</strong> Enter a valid email address. You will need to verify your email address after registration.</li>
-    <li><strong>First and Last Name:</strong> Provide your full name.</li>
-    <li><strong>Password:</strong> Your password must be at least 8 characters long and include an uppercase letter, a number, and a special character.</li>
-    <li><strong>Confirm Password:</strong> Re-enter your password to confirm it matches.</li>
-  </ul>
+  <!-- 
+This <div> serves as the background image container for the page banner.
+
+- The class "page-banner__bg-image" is likely used for styling the banner background.
+- The `style` attribute sets the background image dynamically using inline CSS.
+- `get_theme_file_uri('/images/pageBanner.jpg')` retrieves the full URL of the "pageBanner.jpg" image located inside the theme's "images" folder.
+- `echo` outputs the correct URL for the image so that it appears as a background image.
+-->
+
+  <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/pageBanner.jpg') ?>);"></div>
+  <div class="page-banner__content container container--narrow">
+    <h1 class="page-banner__title"><?php the_title(); ?></h1>
+    <div class="page-banner__intro">
+      <p>Please fill in the following fields to create your account:</p>
+    </div>
+  </div>
 </div>
+<div class="container container--narrow page-section">
 
-<div class="registration-container">
-  <h2>Register</h2>
+  <div class="registration-container">
 
-  <?php
-  if (!empty($errors)) {
-    foreach ($errors as $error) {
-      echo "<p style='color:red;'>" . esc_html($error) . "</p>";
+    <?php
+    if (!empty($errors)) {
+      foreach ($errors as $error) {
+        echo "<p style='color:red;'>" . esc_html($error) . "</p>";
+      }
     }
-  }
-  ?>
+    ?>
+    <div class="generic-content">
+      <form method="post" enctype="multipart/form-data" class="custom-registration-form">
+        <?php wp_nonce_field('register_user_action', 'rgenmusic_register_nonce'); ?>
 
-  <form method="post" enctype="multipart/form-data" class="custom-registration-form">
-    <?php wp_nonce_field('register_user_action', 'rgenmusic_register_nonce'); ?>
+        <label for="register_first_name">First Name: </label>
+        <input type="text" name="register_first_name" value="<?php echo isset($_POST['register_first_name']) ? esc_attr($_POST['register_first_name']) : ''; ?>" required>
 
-    <label for="register_username">Username:</label>
-    <input type="text" name="register_username" value="<?php echo isset($_POST['register_username']) ? esc_attr($_POST['register_username']) : ''; ?>" required>
-    <?php if ($username_error) : ?>
-      <p class="registration-error-message"><?php echo esc_html($username_error); ?></p>
-    <?php endif; ?>
+        <label for="register_last_name">Last Name:</label>
+        <input type="text" name="register_last_name" value="<?php echo isset($_POST['register_last_name']) ? esc_attr($_POST['register_last_name']) : ''; ?>" required>
 
-    <label for="register_user_email">Email:</label>
-    <input type="email" name="register_user_email" value="<?php echo isset($_POST['register_user_email']) ? esc_attr($_POST['register_user_email']) : ''; ?>" required>
-    <?php if ($email_error) : ?>
-      <p class="registration-error-message"><?php echo esc_html($email_error); ?></p>
-    <?php endif; ?>
+        <label for="register_username">Username:</label>
+        <p>Choose a unique username. It can contain letters, numbers, underscores, and periods.</p>
+        <input type="text" name="register_username" value="<?php echo isset($_POST['register_username']) ? esc_attr($_POST['register_username']) : ''; ?>" required>
+        <?php if ($username_error) : ?>
+          <p class="registration-error-message"><?php echo esc_html($username_error); ?></p>
+        <?php endif; ?>
 
-    <label for="register_first_name">First Name:</label>
-    <input type="text" name="register_first_name" value="<?php echo isset($_POST['register_first_name']) ? esc_attr($_POST['register_first_name']) : ''; ?>" required>
+        <label for="register_user_email">Email:</label>
+        <p>Enter a valid email address. You will need to verify your email address after registration.</p>
+        <input type="email" name="register_user_email" value="<?php echo isset($_POST['register_user_email']) ? esc_attr($_POST['register_user_email']) : ''; ?>" required>
+        <?php if ($email_error) : ?>
+          <p class="registration-error-message"><?php echo esc_html($email_error); ?></p>
+        <?php endif; ?>
 
-    <label for="register_last_name">Last Name:</label>
-    <input type="text" name="register_last_name" value="<?php echo isset($_POST['register_last_name']) ? esc_attr($_POST['register_last_name']) : ''; ?>" required>
+        <label for="register_password">Password:</label>
+        <p>Your password must be at least 8 characters long and include an uppercase letter, a number, and a special character.</p>
+        <input type="password" name="register_password" required>
+        <?php if ($password_error) : ?>
+          <p class="registration-error-message"><?php echo esc_html($password_error); ?></p>
+        <?php endif; ?>
 
-    <label for="register_password">Password:</label>
-    <input type="password" name="register_password" required>
-    <?php if ($password_error) : ?>
-      <p class="registration-error-message"><?php echo esc_html($password_error); ?></p>
-    <?php endif; ?>
+        <label for="register_confirm_password">Confirm Password:</label>
+        <p>Re-enter your password to confirm it matches.</p>
+        <input type="password" name="register_confirm_password" required>
+        <?php if ($confirm_password_error) : ?>
+          <p class="registration-error-message"><?php echo esc_html($confirm_password_error); ?></p>
+        <?php endif; ?>
 
-    <label for="register_confirm_password">Confirm Password:</label>
-    <input type="password" name="register_confirm_password" required>
-    <?php if ($confirm_password_error) : ?>
-      <p class="registration-error-message"><?php echo esc_html($confirm_password_error); ?></p>
-    <?php endif; ?>
-
-    <input type="submit" name="register_user" value="Create Account">
-  </form>
-  <p>I agree to the (terms and conditions link) and <a href="<?php echo site_url('/privacy-policy'); ?>">Privacy policy</a>.</p>
+        <input type="submit" name="register_user" value="Create Account">
+      </form>
+      <p>I agree to the (terms and conditions link) and <a href="<?php echo site_url('/privacy-policy'); ?>">Privacy policy</a>.</p>
+    </div>
+  </div>
 </div>
 <?php
 ob_end_flush();

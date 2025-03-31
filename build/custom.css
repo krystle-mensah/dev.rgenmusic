@@ -524,11 +524,6 @@ a:hover {
 		font-size: 1.6rem;
 	}
 
-	p {
-		/* Increase font size for paragraphs on desktop */
-		font-size: 1.1rem;
-	}
-
 	input[type='text'],
 	textarea,
 	select,
@@ -619,12 +614,9 @@ h2 {
 	background-color: #0051a2; /* Changes the background color to a darker blue on hover */
 }
 
-/* Styling for error and success messages */
-p {
-	text-align: center; /* Centers the message text */
-	font-size: 14px; /* Sets the font size to 14px */
-}
-
+/* p {
+	text-align: center;
+} */
 /* Error messages (red color) */
 p[style*='color:red'] {
 	color: red; /* Sets the text color to red */
