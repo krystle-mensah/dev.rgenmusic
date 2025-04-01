@@ -293,29 +293,25 @@ PROFILE PAGE
 */
 
 /* General Styles */
-body {
-	/* Set the font family for the page */
-	/* font-family: Arial, sans-serif; */
-	/* Set the background color of the page */
-	background-color: #f4f4f4;
-	/* Set the text color for the page */
-	color: #333;
-	/* Remove default margin and padding */
-	margin: 0;
-	padding: 0;
-}
+/* body { */
+/* Set the background color of the page */
+/* background-color: #f4f4f4; */
+/* Remove default margin and padding */
+/* margin: 0; */
+/* padding: 0; */
+/* } */
 
 /* Container Styles */
-.container {
-	/* Set container width to 90% of the viewport width */
-	width: 90%;
-	/* Max width of the container is set to 1200px */
-	max-width: 1200px;
-	/* Center the container horizontally */
-	margin: 0 auto;
-	/* Add padding inside the container */
-	padding: 20px;
-}
+/* .container { */
+/* Set container width to 90% of the viewport width */
+/* width: 90%; */
+/* Max width of the container is set to 1200px */
+/* max-width: 1200px; */
+/* Center the container horizontally */
+/* margin: 0 auto; */
+/* Add padding inside the container */
+/* padding: 20px; */
+/* } */
 
 /* Profile Page Styles */
 .profile-container {
@@ -369,12 +365,12 @@ h3 {
 	color: #0068c2;
 }
 
-p {
-	/* Set font size for profile paragraphs */
-	font-size: 1rem;
-	/* Add margin below the paragraph */
-	margin-bottom: 8px;
-}
+/* p { */
+/* Set font size for profile paragraphs */
+/* font-size: 1rem; */
+/* Add margin below the paragraph */
+/* margin-bottom: 8px; */
+/* } */
 
 label {
 	/* Make the label text bold */
@@ -433,12 +429,12 @@ input[type='submit']:hover {
 }
 
 /* Edit Mode Button */
-a {
-	/* Set color for anchor links */
-	color: #0068c2;
-	/* Remove underline from links */
-	text-decoration: none;
-}
+/* a { */
+/* Set color for anchor links */
+/* color: #0068c2; */
+/* Remove underline from links */
+/* text-decoration: none; */
+/* } */
 
 a:hover {
 	/* Add underline to links on hover */
@@ -470,11 +466,11 @@ a:hover {
 		font-size: 1.3rem;
 	}
 
-	p,
-	label {
-		/* Decrease font size for mobile view */
-		font-size: 0.9rem;
-	}
+	/* p, */
+	/* label { */
+	/* Decrease font size for mobile view */
+	/* font-size: 0.9rem; */
+	/* } */
 
 	input[type='text'],
 	textarea,
@@ -567,7 +563,7 @@ REGISTRATION PAGE
 h2 {
 	text-align: center; /* Centers the heading text */
 	color: #0068c2; /* Sets the text color to blue */
-	margin-bottom: 20px; /* Adds space below the heading */
+	margin-bottom: 20px !important;
 }
 
 /* Styling for labels inside the custom registration form */
@@ -835,4 +831,38 @@ Mobile EVENT SUMMARY
 	}
 }
 
+/* END */
+/*
+MOBILE GENERAL 
+*/
+@media (max-width: 768px) {
+	.page-banner {
+		padding: 40px 15px !important; /* Reduce padding for smaller screens */
+		text-align: center;
+	}
+	.page-banner__bg-image {
+		opacity: 0.5 !important; /* Increase visibility on smaller screens */
+		background-position: center; /* Ensure it stays focused */
+	}
+	.page-banner__title {
+		font-size: 2.4rem !important;
+		margin-bottom: 0.8rem !important;
+	}
+	.metabox {
+		display: block !important; /* Stack elements instead of inline */
+		padding: 8px 12px !important; /* Slightly reduce padding */
+		margin-bottom: 20px !important; /* Reduce bottom margin */
+		text-align: center;
+	}
+	.generic-content p,
+	.generic-content li {
+		font-size: 1rem !important;
+		line-height: 1.5;
+	}
+	.btn {
+		font-size: 1rem !important;
+		padding: 10px 20px !important;
+		text-align: center;
+	}
+}
 /* END */

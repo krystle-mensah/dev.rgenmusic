@@ -146,8 +146,8 @@ li {
 }
 
 .page-section {
-	padding-top: 1.6rem;
-	padding-bottom: 1.6rem;
+	padding-top: 1.6rem !important;
+	padding-bottom: 1.6rem !important;
 }
 @media (min-width: 530px) {
 	.page-section {
@@ -1330,7 +1330,7 @@ body.admin-bar .search-overlay {
 }
 
 .headline {
-	margin: 0;
+	/* margin: 0; */
 	font-family: 'Bebas Neue', sans-serif;
 	font-weight: 300;
 }
