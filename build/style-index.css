@@ -878,11 +878,10 @@ body.login {
 
 /* === Footer styles === */
 .site-footer {
-	position: relative; /* Set relative positioning for potential child elements */
-	background-color: #000; /* Black background color */
-	text-align: center; /* Center-align text within the footer */
-	margin-top: 762px; /* Adds space above the footer */
-	padding: 2rem 0; /* Vertical padding for spacing inside the footer */
+	position: relative;
+	background-color: #000;
+	margin-top: auto;
+	padding: 2rem 0;
 }
 .site-footer p {
 	font-size: 0.9rem;
@@ -1326,7 +1325,6 @@ body.admin-bar .search-overlay {
 }
 
 .headline {
-	/* margin: 0; */
 	font-family: 'Bebas Neue', sans-serif;
 	font-weight: 300;
 }

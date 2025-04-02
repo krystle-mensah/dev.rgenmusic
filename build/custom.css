@@ -55,11 +55,18 @@ html {
 	/* Ensure the overlay is above other elements with a higher z-index */
 	z-index: 1;
 }
-
 .main-title {
+	/* Set the font size to 3rem for a scalable heading. */
 	font-size: 3rem;
+
+	/* Apply 10px padding on all sides for inner spacing. */
 	padding: 10px 10px;
+
+	/* Set 10px margin on all sides to create outer spacing. */
 	margin: 10px 10px;
+
+	/* Use a lighter font weight for a subtle text appearance. */
+	font-weight: lighter;
 }
 
 .word {
@@ -117,36 +124,7 @@ html {
 .dashboard-menu a:hover {
 	background: #004e94; /* Darker blue on hover */
 }
-/* 
-Mobile DASHBOARD
-*/
-@media (max-width: 768px) {
-	.dashboard-container {
-		max-width: 95%; /* Makes the container more responsive */
-		margin: 20px auto; /* Reduces margin for smaller screens */
-		padding: 15px; /* Adjusts padding for better spacing */
-	}
 
-	.dashboard-container h1 {
-		font-size: 1.5rem; /* Reduces heading size for mobile */
-	}
-
-	.dashboard-container p {
-		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
-	}
-
-	.dashboard-menu {
-		flex-direction: column; /* Stacks menu items vertically */
-		align-items: center; /* Centers menu items */
-	}
-
-	.dashboard-menu a {
-		width: 100%; /* Makes buttons full-width for better usability */
-		text-align: center; /* Centers text inside buttons */
-		padding: 12px; /* Adjusts padding for touch-friendly buttons */
-	}
-}
-/* END */
 /* 
 LOGIN 
 */
@@ -752,25 +730,6 @@ REGISTRATION SUCCESS
 	background: #0054a6; /* Changes the button color to a darker blue */
 }
 /* END */
-/* my media */
-@media only screen and (max-width: 768px) {
-	.site-footer__col-four {
-		padding-top: 0;
-		margin: 0 auto;
-	}
-	/* .site-footer__inner {
-		border-top: none;
-		padding-top: 0;
-	} */
-	.footer_site_logo {
-		float: none;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.social-icons-list {
-		display: block;
-	}
-}
 
 /* Visible on desktops and tablets */
 @media (min-width: 768px) {
@@ -779,12 +738,8 @@ REGISTRATION SUCCESS
 	}
 }
 
-/*
-EVENT SUMMARY
-*/
-/* 
-Mobile EVENT SUMMARY  
-*/
+/* === Event Summery styles === */
+
 /* Media query for screens with a maximum width of 768px (tablets and below) */
 @media only screen and (max-width: 768px) {
 	/* Styles for the event summary container */
@@ -887,23 +842,31 @@ Mobile EVENT SUMMARY
 
 /* === Media general styles === */
 @media (max-width: 768px) {
-	.page-banner {
-		padding: 40px 15px !important; /* Reduce padding for smaller screens */
+	.page-section p {
+		font-size: 10px;
+	}
+	.generic-content {
 		text-align: center;
+	}
+	.post-item .headline--medium {
+		font-size: 1rem;
 	}
 	.page-banner__bg-image {
 		opacity: 0.5 !important; /* Increase visibility on smaller screens */
 		background-position: center; /* Ensure it stays focused */
 	}
-	.page-banner__title {
-		font-size: 2.4rem !important;
-		margin-bottom: 0.8rem !important;
+	h1.page-banner__title {
+		font-size: 2.4rem;
+		margin-bottom: 0.8rem;
 	}
 	.metabox {
 		display: block !important; /* Stack elements instead of inline */
 		padding: 8px 12px !important; /* Slightly reduce padding */
 		margin-bottom: 20px !important; /* Reduce bottom margin */
 		text-align: center;
+	}
+	div.metabox--position-up {
+		position: relative;
 	}
 	.generic-content p,
 	.generic-content li {
@@ -914,6 +877,46 @@ Mobile EVENT SUMMARY
 		font-size: 1rem !important;
 		padding: 10px 20px !important;
 		text-align: center;
+	}
+	/* Front page media styles */
+	.overlay-text {
+		top: 40%;
+	}
+	/* footer media styles */
+	footer .float-left {
+		float: none;
+	}
+	ul.social-icons-list {
+		display: block;
+	}
+}
+/* 
+Mobile DASHBOARD
+*/
+@media (max-width: 768px) {
+	.dashboard-container {
+		max-width: 95%; /* Makes the container more responsive */
+		margin: 20px auto; /* Reduces margin for smaller screens */
+		padding: 15px; /* Adjusts padding for better spacing */
+	}
+
+	.dashboard-container h1 {
+		font-size: 1.5rem; /* Reduces heading size for mobile */
+	}
+
+	.dashboard-container p {
+		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
+	}
+
+	.dashboard-menu {
+		flex-direction: column; /* Stacks menu items vertically */
+		align-items: center; /* Centers menu items */
+	}
+
+	.dashboard-menu a {
+		width: 100%; /* Makes buttons full-width for better usability */
+		text-align: center; /* Centers text inside buttons */
+		padding: 12px; /* Adjusts padding for touch-friendly buttons */
 	}
 }
 /* END */
