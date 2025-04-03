@@ -644,14 +644,14 @@ h2 {
 	text-align: center;
 } */
 /* Error messages (red color) */
-p[style*='color:red'] {
-	color: red; /* Sets the text color to red */
-}
+/* p[style*='color:red'] { */
+/* color: red;  */
+/* } */
 
 /* Success messages (green color) */
-p[style*='color:green'] {
-	color: green; /* Sets the text color to green */
-}
+/* p[style*='color:green'] { */
+/* color: green; */
+/* } */
 /* Mobile registration */
 /* Responsive styles for devices with a screen width of 768px or less */
 @media (max-width: 768px) {
@@ -697,6 +697,7 @@ p[style*='color:green'] {
 	color: red;
 	font-size: 0.9em;
 	margin-top: 5px;
+	text-align: center;
 }
 /* END */
 /* 
@@ -842,8 +843,11 @@ REGISTRATION SUCCESS
 
 /* === Media general styles === */
 @media (max-width: 768px) {
+	.page-banner__intro p {
+		font-size: 0.625rem;
+	}
 	.page-section p {
-		font-size: 10px;
+		font-size: 0.625rem;
 	}
 	.generic-content {
 		text-align: center;
@@ -851,12 +855,12 @@ REGISTRATION SUCCESS
 	.post-item .headline--medium {
 		font-size: 1rem;
 	}
-	.page-banner__bg-image {
-		opacity: 0.5 !important; /* Increase visibility on smaller screens */
+	.page-banner .page-banner__bg-image {
+		opacity: 0.5; /* Increase visibility on smaller screens */
 		background-position: center; /* Ensure it stays focused */
 	}
 	h1.page-banner__title {
-		font-size: 2.4rem;
+		font-size: 1.4rem;
 		margin-bottom: 0.8rem;
 	}
 	.metabox {
