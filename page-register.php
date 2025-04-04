@@ -130,13 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
       <label for="register_username">Username:</label>
       <p>Choose a unique username. It can contain letters, numbers, underscores, and periods.</p>
       <input type="text" id="register_username" name="register_username" value="<?php echo isset($_POST['register_username']) ? esc_attr($_POST['register_username']) : ''; ?>" required>
-      <?php
-      /* 
-if ($username_error) : ?>
-  <p class="registration-error-message"><?php echo esc_html($username_error); ?></p>
-<?php endif; ?> 
-*/
-      ?>
+
       <label for="register_user_email">Email:</label>
       <p>Enter a valid email address. You will need to verify your email address after registration.</p>
       <input type="email" id="register_user_email" name="register_user_email" value="<?php echo isset($_POST['register_user_email']) ? esc_attr($_POST['register_user_email']) : ''; ?>" required>
@@ -169,7 +163,7 @@ if ($username_error) : ?>
       ?>
       <input type="submit" name="register_user" value="Create Account">
     </form>
-    <p>I agree to the (terms and conditions link) and <a href="<?php echo site_url('/privacy-policy'); ?>">Privacy policy</a>.</p>
+    <p class="agreement-message">I agree to the (terms and conditions link) and <a href="<?php echo site_url('/privacy-policy'); ?>">Privacy policy</a>.</p>
   </div>
 </div>
 <?php

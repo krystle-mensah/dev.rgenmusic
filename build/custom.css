@@ -322,10 +322,7 @@ a:hover {
 	/* } */
 
 	input[type='text'],
-	textarea,
-	select,
-	input[type='file'] {
-		/* Reduce padding for inputs on mobile */
+	input[type='email'] {
 		padding: 8px;
 	}
 
@@ -394,11 +391,13 @@ CONTACT PAGE
 .wpforms-field-label {
 	color: white !important;
 }
-/* END */
-/* 
-REGISTRATION PAGE 
-*/
-/* Container for the registration form */
+
+/*
+Registration page styles === */
+
+.custom-registration-form p {
+	font-size: 0.75rem;
+}
 .registration-container {
 	max-width: 600px; /* Limits the form's width to 600px */
 	margin: 0 auto; /* Centers the form horizontally */
@@ -407,25 +406,26 @@ REGISTRATION PAGE
 	border-radius: 8px; /* Rounds the corners of the container */
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container */
 }
-
-/* Styling for the main heading (h2) */
-h2 {
-	text-align: center; /* Centers the heading text */
-	color: #0068c2; /* Sets the text color to blue */
-	margin-bottom: 20px !important;
+.agreement-message {
+	text-align: center;
+	font-size: 0.9rem;
 }
+
+/* h2 { */
+/* text-align: center;  */
+/* color: #0068c2;  */
+/* } */
 
 /* Styling for labels inside the custom registration form */
-.custom-registration-form label {
-	display: block; /* Makes the label display as a block element */
-	font-weight: bold; /* Makes the label text bold */
-	margin-bottom: 8px; /* Adds space below the label */
-	color: #333; /* Sets the label text color to dark gray */
-}
+/* .custom-registration-form label { */
+/* display: block;  */
+/* font-weight: bold;  */
+/* margin-bottom: 8px; Adds space below the label */
+/* color: #333; Sets the label text color to dark gray */
+/* } */
 
 /* Styling for input fields and select elements inside the custom registration form */
-.custom-registration-form input,
-.custom-registration-form select {
+.custom-registration-form input {
 	width: 100%; /* Makes inputs and selects take up the full width of the container */
 	padding: 12px; /* Adds padding inside the fields */
 	margin-bottom: 15px; /* Adds space below the fields */
@@ -435,12 +435,12 @@ h2 {
 }
 
 /* Styling specific to text, email, password input fields and select elements */
-.custom-registration-form input[type='password'],
-.custom-registration-form input[type='text'],
-.custom-registration-form input[type='email'],
-.custom-registration-form select {
-	font-size: 16px; /* Sets the font size to 16px */
-}
+/* .custom-registration-form input[type='password'], */
+/* .custom-registration-form input[type='text'], */
+/* .custom-registration-form input[type='email'], */
+/* .custom-registration-form select { */
+/* font-size: 16px; Sets the font size to 16px */
+/* } */
 
 /* Styling for the submit button */
 .custom-registration-form input[type='submit'] {
@@ -474,19 +474,17 @@ h2 {
 /* Mobile registration */
 /* Responsive styles for devices with a screen width of 768px or less */
 @media (max-width: 768px) {
-	.registration-container {
-		padding: 15px; /* Reduces padding for smaller screens */
-	}
+	/* .registration-container { */
+	/* padding: 15px;  */
+	/* } */
 
 	.generic-content h2 {
 		font-size: 28px !important; /* Reduces font size of the heading */
 	}
 
-	.custom-registration-form label,
-	.custom-registration-form input,
-	.custom-registration-form select {
-		font-size: 14px; /* Reduces font size of labels, inputs, and selects */
-	}
+	/* .custom-registration-form label { */
+	/* font-size: 14px; */
+	/* } */
 
 	.custom-registration-form input[type='submit'] {
 		font-size: 14px; /* Reduces font size of the submit button */
@@ -500,10 +498,8 @@ h2 {
 		padding: 10px; /* Further reduces padding for smaller screens */
 	}
 
-	.custom-registration-form label,
-	.custom-registration-form input,
-	.custom-registration-form select {
-		font-size: 12px; /* Further reduces font size of labels, inputs, and selects */
+	.custom-registration-form label {
+		font-size: 0.75rem;
 	}
 
 	.custom-registration-form input[type='submit'] {
@@ -855,14 +851,11 @@ MOBILE LOGIN
 	.page-banner__intro p {
 		font-size: 0.625rem;
 	}
-	.page-section p {
-		font-size: 0.625rem;
-	}
 	.generic-content {
 		text-align: center;
 	}
 	.post-item .headline--medium {
-		font-size: 1rem;
+		font-size: 1.5rem;
 	}
 	.page-banner .page-banner__bg-image {
 		opacity: 0.5; /* Increase visibility on smaller screens */
@@ -901,6 +894,14 @@ MOBILE LOGIN
 	}
 	ul.social-icons-list {
 		display: block;
+	}
+	/* Registration page media styles */
+	.agreement-message {
+		font-size: 0.625rem;
+	}
+
+	.custom-registration-form p {
+		font-size: 0.625rem;
 	}
 }
 /* 
