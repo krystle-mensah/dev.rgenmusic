@@ -12,7 +12,7 @@
     <div class="container">
       <?php
       if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
-        <div class="site_logo float-left">
+        <div class="site-logo float-left">
           <?php the_custom_logo(); ?>
         </div>
       <?php } else { ?>

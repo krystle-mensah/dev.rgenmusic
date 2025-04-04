@@ -1,6 +1,14 @@
+/* Global Styles */
+
+html {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+}
 body {
-	color: #333;
 	font-family: 'Bebas Neue', sans-serif;
+	color: #333;
 	overflow-x: hidden;
 	position: relative;
 	height: 100%;
@@ -8,13 +16,18 @@ body {
 	flex-direction: column;
 	padding: 0;
 }
-html {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 0;
+
+/* === Main Header styles === */
+.site-header {
+	z-index: 3;
+	/* position: absolute; */
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 20px 0;
+	background-color: #000;
 }
-/* END */
 
 /* === Front page styles === */
 
@@ -124,200 +137,6 @@ html {
 .dashboard-menu a:hover {
 	background: #004e94; /* Darker blue on hover */
 }
-
-/* 
-LOGIN 
-*/
-/* Login Container */
-.login-container {
-	max-width: 400px;
-	margin: 50px auto;
-	padding: 30px;
-	background-color: #000;
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	box-sizing: border-box;
-}
-
-/* Site Logo */
-.site_logo {
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.site_logo img {
-	max-width: 150px;
-}
-
-/* School Logo Text (fallback if no logo exists) */
-.school-logo-text {
-	font-size: 28px;
-	text-align: center;
-	color: #0068c2;
-	margin-bottom: 20px;
-}
-
-.school-logo-text a {
-	text-decoration: none;
-	color: inherit;
-}
-
-.school-logo-text a:hover {
-	text-decoration: underline;
-}
-
-/* Error Message */
-.error-message {
-	color: red;
-	text-align: center;
-	margin-bottom: 15px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-/* Custom Login Form */
-.custom-login-form {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-}
-
-/* Form Labels */
-.custom-login-form label {
-	font-size: 14px;
-	color: #333;
-	margin-bottom: 5px;
-}
-
-/* Input Fields */
-.custom-login-form input[type='text'],
-.custom-login-form input[type='password'] {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	font-size: 16px;
-	box-sizing: border-box;
-	transition: border-color 0.3s ease;
-}
-
-.custom-login-form input[type='text']:focus,
-.custom-login-form input[type='password']:focus {
-	border-color: #0068c2;
-	outline: none;
-}
-
-/* Toggle Password Button */
-.custom-login-form button[aria-label='Show/Hide password'] {
-	background-color: #f1f1f1;
-	border: 1px solid #ccc;
-	padding: 8px 12px;
-	cursor: pointer;
-	border-radius: 5px;
-	font-size: 14px;
-	transition: background-color 0.3s ease;
-	align-self: flex-start;
-}
-
-.custom-login-form button[aria-label='Show/Hide password']:hover {
-	background-color: #e0e0e0;
-}
-
-/* Checkbox Styling */
-.custom-login-form input[type='checkbox'] {
-	margin-right: 8px;
-	cursor: pointer;
-}
-
-/* Submit Button */
-.custom-login-form input[type='submit'] {
-	background-color: #0068c2;
-	color: #fff;
-	padding: 14px;
-	border: none;
-	border-radius: 5px;
-	font-size: 16px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-}
-
-.custom-login-form input[type='submit']:hover {
-	background-color: #0055a0;
-}
-
-/* Forgot Password and Registration Links */
-.login-container p {
-	text-align: center;
-	font-size: 14px;
-	margin-top: 10px;
-}
-
-.login-container a {
-	color: #0068c2;
-	text-decoration: none;
-}
-
-.login-container a:hover {
-	text-decoration: underline;
-}
-
-/* Float Helper Class (if needed) */
-/* .float-left {
-	float: left;
-} */
-
-/* Clear Floats */
-.login-container::after {
-	content: '';
-	display: table;
-	clear: both;
-}
-
-/* 
-MOBILE LOGIN
-*/
-@media (max-width: 768px) {
-	.login-container {
-		padding: 20px;
-		background-color: white;
-	}
-
-	.custom-login-form input[type='text'],
-	.custom-login-form input[type='password'],
-	.custom-login-form input[type='submit'] {
-		padding: 14px;
-		font-size: 18px;
-	}
-
-	.login-container p {
-		font-size: 12px;
-	}
-}
-
-@media (max-width: 480px) {
-	.login-container {
-		width: 100%;
-		padding: 15px;
-	}
-
-	.school-logo-text {
-		font-size: 24px;
-	}
-
-	.custom-login-form input[type='text'],
-	.custom-login-form input[type='password'],
-	.custom-login-form input[type='submit'] {
-		padding: 16px;
-		font-size: 18px;
-	}
-
-	.login-container p {
-		font-size: 12px;
-	}
-}
-
-/* END */
-
 /* 
 PROFILE PAGE 
 */
@@ -840,6 +659,196 @@ REGISTRATION SUCCESS
 }
 
 /* END */
+
+/* === Login general styles === */
+
+/* Login Container */
+.login-container {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 30px;
+	background-color: #000;
+	border-radius: 10px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+
+/* Site Logo */
+.site-logo {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.site-logo img {
+	max-width: 150px;
+}
+
+/* School Logo Text (fallback if no logo exists) */
+.school-logo-text {
+	font-size: 28px;
+	text-align: center;
+	color: #0068c2;
+	margin-bottom: 20px;
+}
+
+.school-logo-text a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.school-logo-text a:hover {
+	text-decoration: underline;
+}
+
+/* Error Message - check if you are using this code */
+.error-message {
+	color: red;
+	text-align: center;
+	margin-bottom: 15px;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+/* Custom Login Form */
+.custom-login-form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* Form Labels */
+.custom-login-form label {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 5px;
+}
+
+/* Input Fields */
+.custom-login-form input[type='text'],
+.custom-login-form input[type='password'] {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 16px;
+	box-sizing: border-box;
+	transition: border-color 0.3s ease;
+}
+
+.custom-login-form input[type='text']:focus,
+.custom-login-form input[type='password']:focus {
+	border-color: #0068c2;
+	outline: none;
+}
+
+/* Toggle Password Button */
+.custom-login-form button[aria-label='Show/Hide password'] {
+	background-color: #f1f1f1;
+	border: 1px solid #ccc;
+	padding: 8px 12px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s ease;
+	align-self: flex-start;
+}
+
+.custom-login-form button[aria-label='Show/Hide password']:hover {
+	background-color: #e0e0e0;
+}
+
+/* Checkbox Styling */
+.custom-login-form input[type='checkbox'] {
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+/* Submit Button */
+.custom-login-form input[type='submit'] {
+	background-color: #0068c2;
+	color: #fff;
+	padding: 14px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.custom-login-form input[type='submit']:hover {
+	background-color: #0055a0;
+}
+
+/* Forgot Password and Registration Links */
+.login-container p {
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+}
+
+.login-container a {
+	color: #0068c2;
+	text-decoration: none;
+}
+
+.login-container a:hover {
+	text-decoration: underline;
+}
+
+/* Float Helper Class (if needed) */
+/* .float-left {
+	float: left;
+} */
+
+/* Clear Floats */
+.login-container::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* 
+MOBILE LOGIN
+*/
+@media (max-width: 768px) {
+	.login-container {
+		padding: 20px;
+		background-color: white;
+	}
+
+	.custom-login-form input[type='text'],
+	.custom-login-form input[type='password'],
+	.custom-login-form input[type='submit'] {
+		padding: 14px;
+		font-size: 18px;
+	}
+
+	.login-container p {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.login-container {
+		width: 100%;
+		padding: 15px;
+	}
+
+	.school-logo-text {
+		font-size: 24px;
+	}
+
+	.custom-login-form input[type='text'],
+	.custom-login-form input[type='password'],
+	.custom-login-form input[type='submit'] {
+		padding: 16px;
+		font-size: 18px;
+	}
+
+	.login-container p {
+		font-size: 12px;
+	}
+}
 
 /* === Media general styles === */
 @media (max-width: 768px) {

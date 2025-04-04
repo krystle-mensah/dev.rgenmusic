@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
   // Check if the 'the_custom_logo' function exists and a custom logo is set for the site
   if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
     <!-- If a custom logo exists, display it inside a div with a class 'site_logo' -->
-    <div class="site_logo hide">
+    <div class="site-logo hide">
       <?php the_custom_logo(); // Output the custom logo 
       ?>
     </div>

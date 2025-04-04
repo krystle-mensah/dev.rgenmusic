@@ -5,11 +5,6 @@ ob_start();
 get_header();
 
 $errors = [];
-// Initialize error variables
-$username_error = '';
-$email_error = '';
-$password_error = '';
-$confirm_password_error = '';
 
 // Check if the form was submitted via POST and if the "register_user" field is set
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
@@ -29,35 +24,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
   $password = $_POST["register_password"];
   $password_confirm = $_POST["register_confirm_password"];
 
-  // Field validations and setting error messages
+  // Create a WP_Error object to handle validations like core
+  $validation_errors = new WP_Error();
+
   if (!preg_match('/^[a-zA-Z0-9_.]+$/', $username)) {
-    $username_error = 'Username can only contain letters, numbers, underscores, and periods.';
+    $validation_errors->add('invalid_username', 'Username can only contain letters, numbers, underscores, and periods.');
   }
   if (username_exists($username)) {
-    $username_error = 'Username is already taken.';
+    $validation_errors->add('username_exists', 'Username is already taken.');
   }
   if (email_exists($email)) {
-    $email_error = 'Email is already registered.';
+    $validation_errors->add('email_exists', 'Email is already registered.');
   }
   if (strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/[0-9]/', $password) || !preg_match('/[^a-zA-Z0-9]/', $password)) {
-    $password_error = 'Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.';
+    $validation_errors->add('weak_password', 'Password must be at least 8 characters long and include an uppercase letter, a number, and a special character.');
   }
   if ($password !== $password_confirm) {
-    $confirm_password_error = 'Passwords do not match.';
+    $validation_errors->add('password_mismatch', 'Passwords do not match.');
   }
 
-  // If there are errors, prevent registration and display errors
-  if (!empty($username_error) || !empty($email_error) || !empty($password_error) || !empty($confirm_password_error)) {
-    // Errors are stored in an array for redirection or inline display
-    $errors = array_filter([$username_error, $email_error, $password_error, $confirm_password_error]);
+  // If there are validation errors, get the error messages
+  if (!empty($validation_errors->errors)) {
+    $errors = $validation_errors->get_error_messages();
   }
+
   // Check if there are no validation errors
   if (empty($errors)) {
-    // Proceed with registration if no errors
+    // Map your custom field variables to the standard WordPress keys
+    $user_login = $username;
+    $user_email = $email;
+    $user_pass  = $password;
+
     $userdata = [
-      'user_login' => $username,
-      'user_email' => $email,
-      'user_pass'  => $password,
+      'user_login' => $user_login,
+      'user_email' => $user_email,
+      'user_pass'  => $user_pass,
       'first_name' => $first_name,
       'last_name'  => $last_name,
       'role'       => 'pending_verification', // Assign a custom role for unverified users
@@ -86,8 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
     }
   }
 }
-
-
 ?>
 
 <div class="page-banner">
@@ -118,6 +117,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register_user"])) {
     <!-- <div class="generic-content"></div> -->
     <form method="post" enctype="multipart/form-data" class="custom-registration-form">
       <?php wp_nonce_field('register_user_action', 'rgenmusic_register_nonce'); ?>
+      <!-- Hidden WordPress-like fields -->
+      <input type="hidden" name="redirect_to" value="<?php echo esc_url(site_url('/registration-pending-verification/')); ?>">
+      <input type="hidden" name="action" value="register">
 
       <label for="register_first_name">First Name: </label>
       <input type="text" id="register_first_name" name="register_first_name" value="<?php echo isset($_POST['register_first_name']) ? esc_attr($_POST['register_first_name']) : ''; ?>" required>

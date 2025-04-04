@@ -8,7 +8,7 @@
 
         if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
           <!-- Display the custom logo inside a div with appropriate classes -->
-          <div class="site_logo float-left">
+          <div class="site-logo float-left">
             <?php the_custom_logo(); ?>
           </div>
         <?php } else { ?>
