@@ -18,6 +18,7 @@ body {
 }
 
 /* === Main Header styles === */
+
 .site-header {
 	z-index: 3;
 	/* position: absolute; */
@@ -28,6 +29,7 @@ body {
 	padding: 20px 0;
 	background-color: #000;
 }
+/* .custom-form {} */
 
 /* === Front page styles === */
 
@@ -388,8 +390,92 @@ CONTACT PAGE
   This ensures the text color of the label is set to white, 
   overriding any other color settings due to the use of !important.
 */
+
+/* .wpforms-field-label { */
+/* color: white !important; */
+/* } */
+/* Container */
+.wpforms-form {
+	padding: 2rem;
+	background: #f8f9fa;
+	border-radius: 1rem;
+	/* font-family: 'Open Sans', sans-serif; */
+}
+
+/* Label styles */
 .wpforms-field-label {
-	color: white !important;
+	display: block;
+	font-weight: 600;
+	/* margin-bottom: 0.5rem; */
+	margin-bottom: 1.5rem;
+	color: #333;
+}
+
+/* Inputs, Textareas, and Selects */
+.wpforms-field input,
+.wpforms-field textarea,
+.wpforms-field select {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	background-color: #fff;
+	color: #333;
+	transition: border-color 0.2s ease-in-out;
+}
+
+.wpforms-field input:focus,
+.wpforms-field textarea:focus,
+.wpforms-field select:focus {
+	border-color: #0068c2;
+	outline: none;
+}
+
+/* Submit button */
+.wpforms-submit {
+	display: inline-block;
+	padding: 0.75rem 1.5rem;
+	background-color: #0068c2;
+	color: white;
+	border: none;
+	border-radius: 0.5rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.wpforms-submit:hover {
+	background-color: #0052a3;
+}
+
+/* Error messages */
+.wpforms-error {
+	color: #d93025;
+	font-size: 0.9rem;
+	margin-top: 0.25rem;
+}
+
+/* Spacing between fields */
+.wpforms-field {
+	margin-bottom: 1.5rem;
+}
+.wpforms-hidden {
+	display: none !important;
+}
+.wpforms-field-name fieldset {
+	border: none;
+	padding: 0;
+	margin: 0 0 1.5rem 0;
+}
+.wpforms-field-name .wpforms-field-label {
+	margin-bottom: 0.5rem;
+}
+
+.wpforms-field-name .wpforms-field-row > div label {
+	font-size: 0.875rem;
+	color: #666;
+	margin-bottom: 0.25rem;
 }
 
 /*
@@ -402,9 +488,9 @@ Registration page styles === */
 	max-width: 600px; /* Limits the form's width to 600px */
 	margin: 0 auto; /* Centers the form horizontally */
 	padding: 20px; /* Adds padding around the form */
-	background-color: #fff; /* Sets the background color to white */
+	/* background-color: #fff;  */
 	border-radius: 8px; /* Rounds the corners of the container */
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container */
+	/* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);  */
 }
 .agreement-message {
 	text-align: center;
@@ -695,6 +781,13 @@ REGISTRATION SUCCESS
 .school-logo-text a:hover {
 	text-decoration: underline;
 }
+/* Style for error messages */
+.login-error-message {
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 10px;
+}
 
 /* Error Message - check if you are using this code */
 .error-message {
@@ -797,21 +890,16 @@ REGISTRATION SUCCESS
 } */
 
 /* Clear Floats */
-.login-container::after {
-	content: '';
-	display: table;
-	clear: both;
-}
+/* .login-container::after { */
+/* content: ''; */
+/* display: table; */
+/* clear: both; */
+/* } */
 
 /* 
 MOBILE LOGIN
 */
 @media (max-width: 768px) {
-	.login-container {
-		padding: 20px;
-		background-color: white;
-	}
-
 	.custom-login-form input[type='text'],
 	.custom-login-form input[type='password'],
 	.custom-login-form input[type='submit'] {
@@ -847,6 +935,7 @@ MOBILE LOGIN
 }
 
 /* === Media general styles === */
+
 @media (max-width: 768px) {
 	.page-banner__intro p {
 		font-size: 0.625rem;
@@ -861,10 +950,10 @@ MOBILE LOGIN
 		opacity: 0.5; /* Increase visibility on smaller screens */
 		background-position: center; /* Ensure it stays focused */
 	}
-	h1.page-banner__title {
+	/* h1.page-banner__title {
 		font-size: 1.4rem;
 		margin-bottom: 0.8rem;
-	}
+	} */
 	.metabox {
 		display: block !important; /* Stack elements instead of inline */
 		padding: 8px 12px !important; /* Slightly reduce padding */
@@ -884,7 +973,9 @@ MOBILE LOGIN
 		padding: 10px 20px !important;
 		text-align: center;
 	}
+
 	/* Front page media styles */
+
 	.overlay-text {
 		top: 40%;
 	}
@@ -902,6 +993,12 @@ MOBILE LOGIN
 
 	.custom-registration-form p {
 		font-size: 0.625rem;
+	}
+	/* media for login page */
+	.login-container {
+		padding: 20px;
+		/* background-color: white; */
+		margin: 0;
 	}
 }
 /* 

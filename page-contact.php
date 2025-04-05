@@ -4,14 +4,13 @@ get_header();
 
 while (have_posts()) {
   the_post(); ?>
-
-  <div class="page-banner contact-page-banner">
+  <!-- contact-page-banner -->
+  <div class="page-banner">
     <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/pageBanner.jpg') ?>);"></div>
     <div class="page-banner__content container container--narrow">
       <h1 class="page-banner__title"><?php the_title(); ?></h1>
       <div class="page-banner__intro">
         <p>Get in touch with RGENMUSIC</p>
-        <?php echo do_shortcode('[wpforms id="81"]'); ?>
       </div>
     </div>
   </div>
@@ -32,7 +31,7 @@ while (have_posts()) {
     -->
 
     <div class="generic-content">
-
+      <?php echo do_shortcode('[wpforms id="81"]'); ?>
     </div>
 
   </div>

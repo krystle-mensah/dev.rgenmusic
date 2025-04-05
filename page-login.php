@@ -71,9 +71,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
 
   <!-- Check if there is a login error and display the error message -->
   <?php
-  if (isset($_GET['login_error'])) {
+  /*
+if (isset($_GET['login_error'])) {
     echo "<p class='error-message' style='color:red;'>" . esc_html(urldecode($_GET['login_error'])) . "</p>";
+}
+*/
+  // Check if there is a login error and display the error message 
+
+  if (isset($_GET['login_error'])) {
+    echo "<p class='login-error-message'>" . esc_html(urldecode($_GET['login_error'])) . "</p>";
   }
+
+
+
   ?>
 
   <!-- Custom login form -->
@@ -82,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
     <?php wp_nonce_field('login_user_action', 'rgenmusic_login_nonce'); ?>
 
     <!-- Username input field -->
-    <label for="username">Username:</label>
+    <label for="username">Username or Email</label>
     <input type="text" name="username" id="username" required aria-label="Username">
 
     <!-- Password input field -->
