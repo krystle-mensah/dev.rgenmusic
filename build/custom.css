@@ -366,13 +366,13 @@ a:hover {
 		font-size: 1.6rem;
 	}
 
-	input[type='text'],
-	textarea,
-	select,
-	input[type='file'] {
-		/* Add more padding for inputs on desktop */
-		padding: 12px;
-	}
+	/* input[type='text'], */
+	/* textarea, */
+	/* select, */
+	/* input[type='file'] { */
+	/* Add more padding for inputs on desktop */
+	/* padding: 12px; */
+	/* } */
 
 	input[type='submit'] {
 		/* Add extra padding to submit button on desktop */
@@ -663,7 +663,7 @@ REGISTRATION SUCCESS
 	max-width: 400px;
 	margin: 50px auto;
 	padding: 30px;
-	background-color: #000;
+	/* background-color: #000; */
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
@@ -671,7 +671,7 @@ REGISTRATION SUCCESS
 
 /* Site Logo */
 .site-logo {
-	text-align: center;
+	/* text-align: center; */
 	margin-bottom: 20px;
 }
 
@@ -714,7 +714,7 @@ REGISTRATION SUCCESS
 
 /* Form Labels */
 .custom-login-form label {
-	font-size: 14px;
+	/* font-size: 14px; */
 	color: #333;
 	margin-bottom: 5px;
 }
@@ -726,7 +726,7 @@ REGISTRATION SUCCESS
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	font-size: 16px;
+	/* font-size: 16px; */
 	box-sizing: border-box;
 	transition: border-color 0.3s ease;
 }
@@ -827,7 +827,7 @@ MOBILE LOGIN
 @media (max-width: 480px) {
 	.login-container {
 		width: 100%;
-		padding: 15px;
+		/* padding: 15px; */
 	}
 
 	.school-logo-text {

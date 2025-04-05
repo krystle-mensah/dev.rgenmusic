@@ -28,7 +28,7 @@ if (isset($_GET['code']) && isset($_GET['user_id'])) {
     // Send an email notification to the site admin
     $site_owner_email = get_option('admin_email'); // Get site admin email
     $user_info = get_userdata($user_id); // Retrieve user data
-    $subject = "New User Registration - Email Verified"; // Email subject
+    $subject = "New User Registration - rgenmusic.com"; // Email subject
     $message = "A new user has registered and their email has been verified.\n\n";
     $message .= "Username: " . $user_info->user_login . "\n";
     $message .= "Email: " . $user_info->user_email . "\n";

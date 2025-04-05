@@ -118,5 +118,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
   }
 </script>
 
-<?php //get_footer();  // Uncomment to include footer 
+<?php get_footer();
 ?>
