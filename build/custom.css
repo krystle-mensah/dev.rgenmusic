@@ -53,42 +53,76 @@ body {
 	object-fit: cover; /* Ensures the video covers the entire container without distortion */
 }
 .overlay-text {
-	/* Position the element absolutely relative to its closest positioned ancestor */
 	position: absolute;
-	/* Align the element to the vertical and horizontal center of its container */
-	top: 50%; /* Vertical center */
-	left: 50%; /* Horizontal center */
-	transform: translate(
-		-50%,
-		-50%
-	); /* Adjust the element's position by 50% of its own width and height to achieve perfect centering */
+	top: 50%;
+	left: 0;
+	width: 100%;
+	transform: translateY(-50%);
 
-	/* Set the text color to white */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
 	color: white;
-
-	/* Align the text to the center */
+	z-index: 10;
+	padding: 0 1rem;
 	text-align: center;
-
-	/* Ensure the overlay is above other elements with a higher z-index */
-	z-index: 1;
 }
+
 .main-title {
-	/* Set the font size to 3rem for a scalable heading. */
-	font-size: 3rem;
-
-	/* Apply 10px padding on all sides for inner spacing. */
-	padding: 10px 10px;
-
-	/* Set 10px margin on all sides to create outer spacing. */
-	margin: 10px 10px;
-
+	font-size: 11.25rem;
+	text-transform: uppercase;
+	/* padding: 10px 10px; */
+	/* margin: 10px 10px; */
 	/* Use a lighter font weight for a subtle text appearance. */
 	font-weight: lighter;
 }
 
-.word {
-	display: inline-block;
-	margin: 0 10px;
+.word-rotator {
+	/* position: relative; */
+	z-index: 10;
+	height: 1em;
+	/* overflow: hidden; */
+}
+
+.word-rotator .word {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	animation: rotateWords 6s infinite;
+	z-index: 10;
+}
+
+.word-rotator .word2 {
+	animation-delay: 2s;
+}
+
+.word-rotator .word3 {
+	animation-delay: 4s;
+}
+
+@keyframes rotateWords {
+	0% {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	10% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	30% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	40% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	100% {
+		opacity: 0;
+	}
 }
 
 /* === Dashboard styles === */
@@ -942,6 +976,12 @@ MOBILE LOGIN
 /* === Media general styles === */
 
 @media (max-width: 768px) {
+	.metabox .metabox__blog-home-link {
+		display: grid;
+	}
+	h1.page-banner__title {
+		font-size: 2.6rem;
+	}
 	.page-banner__intro p {
 		font-size: 0.625rem;
 	}
@@ -951,9 +991,12 @@ MOBILE LOGIN
 	.post-item .headline--medium {
 		font-size: 1.5rem;
 	}
+	.page-banner {
+		padding: 0;
+	}
 	.page-banner .page-banner__bg-image {
 		opacity: 0.5; /* Increase visibility on smaller screens */
-		background-position: center; /* Ensure it stays focused */
+		/* background-position: center; */
 	}
 	/* h1.page-banner__title {
 		font-size: 1.4rem;

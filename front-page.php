@@ -7,7 +7,7 @@
 </div>
 <!-- Overlay Text on Top of Video -->
 <div class="overlay-text">
-  <h1 class="main-title">
+  <h1 class="main-title word-rotator">
     <span class="word word1">create</span>
     <span class="word word2">collaborate</span>
     <span class="word word3">elevate</span>
