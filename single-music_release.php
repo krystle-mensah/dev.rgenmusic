@@ -16,7 +16,7 @@ while (have_posts()) {
   <!-- need to sort out the date -->
   <div class="container container--narrow page-section">
     <div class="metabox metabox--position-up metabox--with-home-link">
-      <p><a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('music_release'); ?>"><i class="fa fa-home" aria-hidden="true"></i> Music Releases Home</a> <span
+      <p><a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('music_release'); ?>"><i class="fa fa-music" aria-hidden="true"></i> Music Releases Home</a> <span
           class="metabox__main">Released by <?php the_author_posts_link(); ?> on <?php the_time('n.j.y'); ?> in <?php echo get_the_category_list(', '); ?></span></p>
     </div>
 

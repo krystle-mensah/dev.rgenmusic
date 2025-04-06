@@ -28,14 +28,13 @@ body {
 	top: 0;
 	left: 0;
 	right: 0;
-	padding: 20px 0;
+	padding: 1.04% 0;
 	background-color: #000;
 }
 /* .custom-form {} */
 
 /* === Front page styles === */
 
-/* The video background is positioned fixed so it stays in place while scrolling */
 .video-background {
 	position: fixed; /* Fixes the background video in place */
 	top: 0; /* Aligns the video to the top of the viewport */
@@ -58,74 +57,66 @@ body {
 	left: 0;
 	width: 100%;
 	transform: translateY(-50%);
-
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-
 	color: white;
 	z-index: 10;
-	padding: 0 1rem;
+	/* padding: 0 1rem; */
 	text-align: center;
 }
 
 .main-title {
-	font-size: 11.25rem;
+	/* font-size: 7.25rem; */
+	font-size: 7.25em;
 	text-transform: uppercase;
 	/* padding: 10px 10px; */
 	/* margin: 10px 10px; */
 	/* Use a lighter font weight for a subtle text appearance. */
-	font-weight: lighter;
+	/* font-weight: lighter; */
 }
-
 .word-rotator {
-	/* position: relative; */
 	z-index: 10;
-	height: 1em;
-	/* overflow: hidden; */
+	height: 3em; /* Set the height for the container */
+	width: 100%; /* Ensure it stretches across its parent container */
+	position: relative;
+	display: flex;
+	align-items: center; /* Vertically center */
+	justify-content: center; /* Horizontally center */
+	margin: 0 auto; /* Ensure it's centered within its parent */
 }
 
 .word-rotator .word {
-	position: absolute;
-	top: 0;
-	left: 0;
 	opacity: 0;
-	animation: rotateWords 6s infinite;
-	z-index: 10;
+	animation: fadeWords 6s infinite;
+	text-align: center; /* Center the text inside the word element */
+	position: absolute; /* Keep them in the same spot */
 }
 
 .word-rotator .word2 {
-	animation-delay: 2s;
+	animation-delay: 2s; /* Delay for the second word */
 }
 
 .word-rotator .word3 {
-	animation-delay: 4s;
+	animation-delay: 4s; /* Delay for the third word */
 }
 
-@keyframes rotateWords {
-	0% {
-		opacity: 0;
-		transform: translateY(100%);
-	}
-	10% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	30% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-	40% {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
+@keyframes fadeWords {
+	0%,
 	100% {
 		opacity: 0;
 	}
+	10%,
+	30% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
 
-/* === Dashboard styles === */
+/* === Main Dashboard styles === */
 
 /* Base container styling */
 .dashboard-container {
@@ -534,7 +525,7 @@ legend.wpforms-field-label {
 }
 
 /*
-Registration page styles === */
+Main Registration page styles === */
 
 .custom-registration-form p {
 	font-size: 0.75rem;
@@ -612,26 +603,6 @@ Registration page styles === */
 /* p[style*='color:green'] { */
 /* color: green; */
 /* } */
-/* Mobile registration */
-/* Responsive styles for devices with a screen width of 768px or less */
-@media (max-width: 768px) {
-	/* .registration-container { */
-	/* padding: 15px;  */
-	/* } */
-
-	.generic-content h2 {
-		font-size: 28px !important; /* Reduces font size of the heading */
-	}
-
-	/* .custom-registration-form label { */
-	/* font-size: 14px; */
-	/* } */
-
-	.custom-registration-form input[type='submit'] {
-		font-size: 14px; /* Reduces font size of the submit button */
-		padding: 10px; /* Reduces padding of the submit button */
-	}
-}
 
 .registration-error-message {
 	color: red;
@@ -679,7 +650,8 @@ REGISTRATION SUCCESS
 	}
 }
 
-/* === Event Summery styles === */
+/* === 
+Event Summery styles === */
 
 /* Media query for screens with a maximum width of 768px (tablets and below) */
 @media only screen and (max-width: 768px) {
@@ -951,33 +923,11 @@ MOBILE LOGIN
 	}
 }
 
-@media (max-width: 480px) {
-	.login-container {
-		width: 100%;
-		/* padding: 15px; */
-	}
-
-	.school-logo-text {
-		font-size: 24px;
-	}
-
-	.custom-login-form input[type='text'],
-	.custom-login-form input[type='password'],
-	.custom-login-form input[type='submit'] {
-		padding: 16px;
-		font-size: 18px;
-	}
-
-	.login-container p {
-		font-size: 12px;
-	}
-}
-
 /* === Media general styles === */
 
 @media (max-width: 768px) {
-	.metabox .metabox__blog-home-link {
-		display: grid;
+	div.metabox .metabox__blog-home-link {
+		display: block;
 	}
 	h1.page-banner__title {
 		font-size: 2.6rem;
@@ -990,6 +940,7 @@ MOBILE LOGIN
 	}
 	.post-item .headline--medium {
 		font-size: 1.5rem;
+		text-align: center;
 	}
 	.page-banner {
 		padding: 0;
@@ -1010,6 +961,7 @@ MOBILE LOGIN
 	}
 	div.metabox--position-up {
 		position: relative;
+		transform: translateY(0%);
 	}
 	.generic-content p,
 	.generic-content li {
@@ -1022,19 +974,78 @@ MOBILE LOGIN
 		text-align: center;
 	}
 
-	/* Front page media styles */
+	/* 
+	Header media styles */
 
-	.overlay-text {
-		top: 40%;
+	.site-header {
+		z-index: 3;
+		padding: 3.5% 0;
 	}
+
 	/* footer media styles */
+
 	footer .float-left {
 		float: none;
 	}
 	ul.social-icons-list {
 		display: block;
 	}
+
+	/* Front page media styles */
+
+	.main-title {
+		font-size: 3em;
+	}
+
+	.overlay-text {
+		top: 40%;
+	}
+
+	/* 
+	Media for dashbord */
+
+	.dashboard-container {
+		max-width: 95%; /* Makes the container more responsive */
+		margin: 20px auto; /* Reduces margin for smaller screens */
+		padding: 15px; /* Adjusts padding for better spacing */
+	}
+
+	.dashboard-container h1 {
+		font-size: 1.5rem; /* Reduces heading size for mobile */
+	}
+
+	.dashboard-container p {
+		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
+	}
+
+	.dashboard-menu {
+		flex-direction: column; /* Stacks menu items vertically */
+		align-items: center; /* Centers menu items */
+	}
+
+	.dashboard-menu a {
+		width: 100%; /* Makes buttons full-width for better usability */
+		text-align: center; /* Centers text inside buttons */
+		padding: 12px; /* Adjusts padding for touch-friendly buttons */
+	}
+
 	/* Registration page media styles */
+	/* .registration-container { */
+	/* padding: 15px;  */
+	/* } */
+
+	.generic-content h2 {
+		font-size: 28px !important; /* Reduces font size of the heading */
+	}
+
+	/* .custom-registration-form label { */
+	/* font-size: 14px; */
+	/* } */
+
+	.custom-registration-form input[type='submit'] {
+		font-size: 14px; /* Reduces font size of the submit button */
+		padding: 10px; /* Reduces padding of the submit button */
+	}
 	.agreement-message {
 		font-size: 0.625rem;
 	}
@@ -1072,34 +1083,29 @@ MOBILE LOGIN
 	.wpforms-field textarea {
 		font-size: 1rem;
 	}
+	.login-container {
+		width: 100%;
+		/* padding: 15px; */
+	}
+
+	.school-logo-text {
+		font-size: 24px;
+	}
+
+	.custom-login-form input[type='text'],
+	.custom-login-form input[type='password'],
+	.custom-login-form input[type='submit'] {
+		padding: 16px;
+		font-size: 18px;
+	}
+
+	.login-container p {
+		font-size: 12px;
+	}
 }
+
 /* 
 Mobile DASHBOARD
 */
-@media (max-width: 768px) {
-	.dashboard-container {
-		max-width: 95%; /* Makes the container more responsive */
-		margin: 20px auto; /* Reduces margin for smaller screens */
-		padding: 15px; /* Adjusts padding for better spacing */
-	}
 
-	.dashboard-container h1 {
-		font-size: 1.5rem; /* Reduces heading size for mobile */
-	}
-
-	.dashboard-container p {
-		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
-	}
-
-	.dashboard-menu {
-		flex-direction: column; /* Stacks menu items vertically */
-		align-items: center; /* Centers menu items */
-	}
-
-	.dashboard-menu a {
-		width: 100%; /* Makes buttons full-width for better usability */
-		text-align: center; /* Centers text inside buttons */
-		padding: 12px; /* Adjusts padding for touch-friendly buttons */
-	}
-}
 /* END */
