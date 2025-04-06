@@ -30,7 +30,7 @@ while (have_posts()) {
     </div>
     -->
 
-    <div class="generic-content">
+    <div class="generic-content contact-form-container">
       <?php echo do_shortcode('[wpforms id="81"]'); ?>
     </div>
 

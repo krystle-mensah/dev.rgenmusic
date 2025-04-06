@@ -1,4 +1,6 @@
-/* Global Styles */
+/* =====================
+Global Styles
+===================== */
 
 html {
 	height: 100%;
@@ -164,7 +166,6 @@ PROFILE PAGE
 /* padding: 20px; */
 /* } */
 
-/* Profile Page Styles */
 .profile-container {
 	/* Set the background color to white */
 	background-color: #fff;
@@ -223,14 +224,14 @@ h3 {
 /* margin-bottom: 8px; */
 /* } */
 
-label {
-	/* Make the label text bold */
-	font-weight: bold;
-	/* Display the label as a block element */
-	display: block;
-	/* Add space above and below the label */
-	margin: 8px 0;
-}
+/* label { */
+/* Make the label text bold */
+/* font-weight: bold; */
+/* Display the label as a block element */
+/* display: block; */
+/* Add space above and below the label */
+/* margin: 8px 0; */
+/* } */
 
 input[type='text'],
 textarea,
@@ -385,6 +386,22 @@ a:hover {
 /* 
 CONTACT PAGE 
 */
+legend.wpforms-field-label {
+	display: none;
+}
+.wpforms-hidden {
+	display: none !important;
+}
+
+.contact-form-container {
+	width: 100%;
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 1.5rem;
+	background: #f9f9f9;
+	border-radius: 1rem;
+	box-sizing: border-box;
+}
 /* 
   Targeting the label of a form field within WPForms.
   This ensures the text color of the label is set to white, 
@@ -394,88 +411,92 @@ CONTACT PAGE
 /* .wpforms-field-label { */
 /* color: white !important; */
 /* } */
-/* Container */
+/* =====================
+  WPForms Global Reset
+===================== */
+
 .wpforms-form {
-	padding: 2rem;
-	background: #f8f9fa;
-	border-radius: 1rem;
-	/* font-family: 'Open Sans', sans-serif; */
-}
-
-/* Label styles */
-.wpforms-field-label {
-	display: block;
-	font-weight: 600;
-	/* margin-bottom: 0.5rem; */
-	margin-bottom: 1.5rem;
-	color: #333;
-}
-
-/* Inputs, Textareas, and Selects */
-.wpforms-field input,
-.wpforms-field textarea,
-.wpforms-field select {
+	max-width: 100%;
 	width: 100%;
-	padding: 0.75rem 1rem;
-	font-size: 1rem;
-	border: 1px solid #ccc;
-	border-radius: 0.5rem;
-	background-color: #fff;
-	color: #333;
-	transition: border-color 0.2s ease-in-out;
+	background: transparent;
+	padding: 0;
+	margin: 0 auto;
 }
 
-.wpforms-field input:focus,
-.wpforms-field textarea:focus,
-.wpforms-field select:focus {
-	border-color: #0068c2;
-	outline: none;
-}
-
-/* Submit button */
-.wpforms-submit {
-	display: inline-block;
-	padding: 0.75rem 1.5rem;
-	background-color: #0068c2;
-	color: white;
-	border: none;
-	border-radius: 0.5rem;
-	font-weight: bold;
-	cursor: pointer;
-	transition: background-color 0.2s ease;
-}
-
-.wpforms-submit:hover {
-	background-color: #0052a3;
-}
-
-/* Error messages */
-.wpforms-error {
-	color: #d93025;
-	font-size: 0.9rem;
-	margin-top: 0.25rem;
-}
-
-/* Spacing between fields */
-.wpforms-field {
-	margin-bottom: 1.5rem;
-}
-.wpforms-hidden {
-	display: none !important;
-}
+/* Remove fieldset border around Name */
 .wpforms-field-name fieldset {
 	border: none;
 	padding: 0;
 	margin: 0 0 1.5rem 0;
 }
-.wpforms-field-name .wpforms-field-label {
-	margin-bottom: 0.5rem;
+
+/* First/Last Name side-by-side */
+.wpforms-field-name .wpforms-field-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
 }
 
-.wpforms-field-name .wpforms-field-row > div label {
+.wpforms-field-name .wpforms-field-row > div {
+	flex: 1 1 0;
+	min-width: 100px;
+}
+
+/* Input + Textarea Styling */
+.wpforms-field input[type='text'],
+.wpforms-field input[type='email'],
+.wpforms-field textarea {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+	background: #fff;
+	color: #000;
+	box-sizing: border-box;
+}
+
+/* Labels */
+.wpforms-field label {
+	font-weight: 600;
+	display: block;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
+}
+
+/* Sub-labels like "First", "Last" */
+.wpforms-field .wpforms-field-row > div label {
 	font-size: 0.875rem;
 	color: #666;
 	margin-bottom: 0.25rem;
+}
+
+/* Textarea */
+.wpforms-field textarea {
+	min-height: 150px;
+	resize: vertical;
+}
+
+/* Submit Button */
+.wpforms-submit {
+	background-color: #0068c2; /* your theme’s button color */
+	color: #fff;
+	border: none;
+	padding: 0.75rem 1.5rem;
+	border-radius: 0.5rem;
+	font-weight: bold;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.wpforms-submit:hover {
+	background-color: #0054a1;
+}
+
+/* Spacing between fields */
+.wpforms-field {
+	margin-bottom: 1.5rem;
 }
 
 /*
@@ -578,29 +599,13 @@ Registration page styles === */
 	}
 }
 
-/* Responsive styles for devices with a screen width of 480px or less */
-@media (max-width: 480px) {
-	.registration-container {
-		padding: 10px; /* Further reduces padding for smaller screens */
-	}
-
-	.custom-registration-form label {
-		font-size: 0.75rem;
-	}
-
-	.custom-registration-form input[type='submit'] {
-		font-size: 12px; /* Further reduces font size of the submit button */
-		padding: 10px; /* Further reduces padding of the submit button */
-	}
-}
-
 .registration-error-message {
 	color: red;
 	font-size: 0.9em;
 	margin-top: 5px;
 	text-align: center;
 }
-/* END */
+
 /* 
 REGISTRATION SUCCESS 
 */
@@ -999,6 +1004,30 @@ MOBILE LOGIN
 		padding: 20px;
 		/* background-color: white; */
 		margin: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.registration-container {
+		padding: 10px;
+	}
+
+	.custom-registration-form label {
+		font-size: 0.75rem;
+	}
+	.custom-registration-form input[type='submit'] {
+		font-size: 12px;
+		padding: 10px;
+	}
+	/* Media for contact page */
+	.contact-form-container {
+		padding: 1rem;
+		border-radius: 0.5rem;
+	}
+
+	.wpforms-field input,
+	.wpforms-field textarea {
+		font-size: 1rem;
 	}
 }
 /* 
