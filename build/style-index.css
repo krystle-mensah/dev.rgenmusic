@@ -923,13 +923,15 @@ body.login {
 	width: 50%;
 	float: left;
 }
-.site-footer__col-four {
-	padding-top: 20px;
-	width: 85%;
-	margin: 0 auto;
-	clear: both;
-	text-align: center;
-}
+
+/* .site-footer__col-four { */
+/* padding-top: 20px; */
+/* width: 85%; */
+/* margin: 0 auto; */
+/* clear: both; */
+/* text-align: center; */
+/* } */
+
 @media (min-width: 960px) {
 	.site-footer__col-four {
 		padding-top: 0;

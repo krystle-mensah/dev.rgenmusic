@@ -33,6 +33,43 @@ body {
 }
 /* .custom-form {} */
 
+/* === Music Release page styles === */
+
+.releases-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 2rem;
+	padding: 2rem 0;
+}
+
+.release-card {
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+	text-align: center;
+}
+.release-cover {
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+
+/* Style for the track heading */
+.track-heading {
+	/* font-family: 'Bebas Neue', sans-serif; */
+	font-size: 2.5rem;
+	font-weight: lighter;
+	/* text-transform: uppercase; */
+	color: #333;
+	/* margin-bottom: 1rem; */
+	/* text-align: center; */
+	/* line-height: 1.2; */
+}
+.track-heading a {
+	text-decoration: none;
+}
+
 /* === Front page styles === */
 
 .video-background {
@@ -170,7 +207,6 @@ body {
 PROFILE PAGE 
 */
 
-/* General Styles */
 /* body { */
 /* Set the background color of the page */
 /* background-color: #f4f4f4; */
@@ -766,11 +802,10 @@ Event Summery styles === */
 	box-sizing: border-box;
 }
 
-/* Site Logo */
-.site-logo {
-	/* text-align: center; */
-	margin-bottom: 20px;
-}
+/* .site-logo { */
+/* text-align: center; */
+/* margin-bottom: 20px; */
+/* } */
 
 .site-logo img {
 	max-width: 150px;
@@ -946,8 +981,7 @@ MOBILE LOGIN
 		padding: 0;
 	}
 	.page-banner .page-banner__bg-image {
-		opacity: 0.5; /* Increase visibility on smaller screens */
-		/* background-position: center; */
+		opacity: 0.5;
 	}
 	/* h1.page-banner__title {
 		font-size: 1.4rem;
@@ -999,6 +1033,12 @@ MOBILE LOGIN
 
 	.overlay-text {
 		top: 40%;
+	}
+
+	/* Music Releases media */
+
+	.track-heading {
+		font-size: 2rem; /* Smaller font size on mobile */
 	}
 
 	/* 
@@ -1062,6 +1102,12 @@ MOBILE LOGIN
 }
 
 @media (max-width: 480px) {
+	/* Music Release media */
+
+	.track-heading {
+		font-size: 1.8rem; /* Even smaller for very small screens */
+	}
+
 	.registration-container {
 		padding: 10px;
 	}

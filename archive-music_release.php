@@ -15,14 +15,16 @@ get_header(); ?>
 <div class="container container--narrow page-section">
   <div class="releases-grid">
     <?php
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
     $music_releases = new WP_Query(array(
       'post_type' => 'music_release',
       'posts_per_page' => 2,
       'orderby' => 'date',
-      'order' => 'DESC'
+      'order' => 'DESC',
+      'paged' => $paged
     ));
 
-    $music_releases = new WP_Query($music_releases);
     if ($music_releases->have_posts()) :
       while ($music_releases->have_posts()) : $music_releases->the_post();
         $music_release_cover = get_field('cover_art_image');
@@ -30,18 +32,16 @@ get_header(); ?>
         $release_date = get_field('music_release_date');
         $preview = get_field('audio_preview');
     ?>
-        <!-- need class below for styling -->
-        <div class="post-item">
+        <div class="release-card">
           <?php if ($music_release_cover): ?>
             <img src="<?php echo esc_url($music_release_cover['url']); ?>" alt="<?php the_title(); ?>" class="release-cover">
           <?php endif; ?>
-          <h2 class="headline headline--medium headline--post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+          <h2 class="track-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
           <p class="release-artist"><?php echo esc_html($music_release_cover); ?></p>
           <div class="metabox">
             <?php
-            // echo '<p>Released by ' . get_the_author_posts_link() . ' on ' . get_the_time('n.j.y') . ' in ' . get_the_category_list(', ') . '</p>';
+            echo '<p>Released: ' . get_the_author_posts_link() . ' on ' . esc_html((new DateTime($release_date))->format('n.j.y')) . get_the_category_list(', ') . '</p>';
             ?>
-            <p class="release-date">Released: <?php echo esc_html($release_date); ?></p>
             <?php if ($preview): ?>
               <audio controls src="<?php echo esc_url($preview); ?>"></audio>
             <?php endif; ?>
@@ -49,9 +49,6 @@ get_header(); ?>
 
           <div class="generic-content">
             <p><?php echo wp_trim_words(get_the_content(), 18); ?></p>
-
-            <?php // <p><a class="btn btn--blue" href="<?php the_permalink();">View Single &raquo;</a></p> 
-            ?>
             <a href="<?php the_permalink(); ?>" class="release-link">View Track</a>
           </div>
         </div>
@@ -64,14 +61,13 @@ get_header(); ?>
     ?>
   </div>
 
-
   <?php
-  echo paginate_links();
+  echo paginate_links(array(
+    'total' => $music_releases->max_num_pages
+  ));
   ?>
   <hr class="section-break">
   <p>Looking for a recap of past music releases? <a href="<?php echo site_url('/past-music-releases'); ?>">check out our past music releases archive</a>. </p>
 </div>
 
-<?php get_footer();
-
-?>
+<?php get_footer(); ?>
