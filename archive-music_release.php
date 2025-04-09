@@ -27,17 +27,17 @@ get_header(); ?>
 
     if ($music_releases->have_posts()) :
       while ($music_releases->have_posts()) : $music_releases->the_post();
-        $music_release_cover = get_field('cover_art_image');
+        $cover_art_image = get_field('cover_art_image');
         $artist = get_field('collaborators');
         $release_date = get_field('music_release_date');
         $preview = get_field('audio_preview');
     ?>
         <div class="release-card">
-          <?php if ($music_release_cover): ?>
-            <img src="<?php echo esc_url($music_release_cover['url']); ?>" alt="<?php the_title(); ?>" class="release-cover">
+          <?php if ($cover_art_image): ?>
+            <img src="<?php echo esc_url($cover_art_image['url']); ?>" alt="<?php the_title(); ?>" class="release-cover">
           <?php endif; ?>
           <h2 class="track-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-          <p class="release-artist"><?php echo esc_html($music_release_cover); ?></p>
+          <p class="release-artist"><?php echo esc_html($cover_art_image); ?></p>
           <div class="metabox">
             <?php
             echo '<p>Released: ' . get_the_author_posts_link() . ' on ' . esc_html((new DateTime($release_date))->format('n.j.y')) . get_the_category_list(', ') . '</p>';
@@ -47,7 +47,7 @@ get_header(); ?>
             <?php endif; ?>
           </div>
 
-          <div class="generic-content">
+          <div class="generic-content"><?php get_the_post_thumbnail(); ?>
             <p><?php echo wp_trim_words(get_the_content(), 18); ?></p>
             <a href="<?php the_permalink(); ?>" class="release-link">View Track</a>
           </div>
