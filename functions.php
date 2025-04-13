@@ -21,6 +21,7 @@ function rgenmusic_features()
     'flex-height' => true,
   ));
   add_theme_support('menus');
+  add_theme_support('post-thumbnails');
 
   // Flush rewrite rules on theme switch
   flush_rewrite_rules();
@@ -50,7 +51,7 @@ function rgenmusic_scripts()
 }
 
 //Verify that thumbnails are enabled in your WordPress theme.
-add_theme_support('post-thumbnails');
+//add_theme_support('post-thumbnails');
 // add_action('pre_get_posts', 'rgenmusic_adjust_queries');
 // Define a function named rgenmusic_adjust_queries that modifies WordPress queries
 function rgenmusic_adjust_queries($query)

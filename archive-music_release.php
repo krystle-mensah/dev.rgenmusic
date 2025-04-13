@@ -7,7 +7,7 @@ get_header(); ?>
   <div class="page-banner__content container container--narrow">
     <h1 class="page-banner__title">Releases</h1>
     <div class="page-banner__intro">
-      <p>See what is going on in rgen music releases.</p>
+      <p>"Our Complete Catalogue, One Track at a Time."</p>
     </div>
   </div>
 </div>
