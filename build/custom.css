@@ -23,7 +23,6 @@ body {
 
 .site-header {
 	z-index: 3;
-	/* position: absolute; */
 	position: relative;
 	top: 0;
 	left: 0;
@@ -31,7 +30,6 @@ body {
 	padding: 1.04% 0;
 	background-color: #000;
 }
-/* .custom-form {} */
 
 /* === Music Release page styles === */
 
@@ -55,17 +53,12 @@ body {
 	border-radius: 8px;
 }
 
-/* Style for the track heading */
 .track-heading {
-	/* font-family: 'Bebas Neue', sans-serif; */
 	font-size: 2.5rem;
 	font-weight: lighter;
-	/* text-transform: uppercase; */
 	color: #333;
-	/* margin-bottom: 1rem; */
-	/* text-align: center; */
-	/* line-height: 1.2; */
 }
+
 .track-heading a {
 	text-decoration: none;
 }
@@ -73,21 +66,21 @@ body {
 /* === Front page styles === */
 
 .video-background {
-	position: fixed; /* Fixes the background video in place */
-	top: 0; /* Aligns the video to the top of the viewport */
-	left: 0; /* Aligns the video to the left of the viewport */
-	width: 100%; /* Ensures the video spans the entire width of the viewport */
-	height: 100vh; /* Sets the video height to fill the entire viewport height */
-	overflow: hidden; /* Hides any overflow to ensure no scrollbars appear */
-	z-index: -1; /* Places the video behind all other page content */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	z-index: -1;
 }
 
-/* Ensures the video stretches to fit the container and maintains aspect ratio */
 .video-background video {
-	width: 100%; /* Sets video width to fill the container */
-	height: 100%; /* Sets video height to fill the container */
-	object-fit: cover; /* Ensures the video covers the entire container without distortion */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
+
 .overlay-text {
 	position: absolute;
 	top: 50%;
@@ -100,19 +93,14 @@ body {
 	justify-content: center;
 	color: white;
 	z-index: 10;
-	/* padding: 0 1rem; */
 	text-align: center;
 }
 
 .main-title {
-	/* font-size: 7.25rem; */
 	font-size: 7.25em;
 	text-transform: uppercase;
-	/* padding: 10px 10px; */
-	/* margin: 10px 10px; */
-	/* Use a lighter font weight for a subtle text appearance. */
-	/* font-weight: lighter; */
 }
+
 .word-rotator {
 	z-index: 10;
 	height: 3em; /* Set the height for the container */
@@ -203,38 +191,11 @@ body {
 .dashboard-menu a:hover {
 	background: #004e94; /* Darker blue on hover */
 }
-/* 
-PROFILE PAGE 
-*/
-
-/* body { */
-/* Set the background color of the page */
-/* background-color: #f4f4f4; */
-/* Remove default margin and padding */
-/* margin: 0; */
-/* padding: 0; */
-/* } */
-
-/* Container Styles */
-/* .container { */
-/* Set container width to 90% of the viewport width */
-/* width: 90%; */
-/* Max width of the container is set to 1200px */
-/* max-width: 1200px; */
-/* Center the container horizontally */
-/* margin: 0 auto; */
-/* Add padding inside the container */
-/* padding: 20px; */
-/* } */
 
 .profile-container {
-	/* Set the background color to white */
 	background-color: #fff;
-	/* Add padding inside the profile container */
 	padding: 20px;
-	/* Rounded corners for the profile container */
 	border-radius: 8px;
-	/* Add subtle box shadow around the profile container */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -277,22 +238,6 @@ h3 {
 	/* Set the color to the blue theme */
 	color: #0068c2;
 }
-
-/* p { */
-/* Set font size for profile paragraphs */
-/* font-size: 1rem; */
-/* Add margin below the paragraph */
-/* margin-bottom: 8px; */
-/* } */
-
-/* label { */
-/* Make the label text bold */
-/* font-weight: bold; */
-/* Display the label as a block element */
-/* display: block; */
-/* Add space above and below the label */
-/* margin: 8px 0; */
-/* } */
 
 input[type='text'],
 textarea,
@@ -341,14 +286,6 @@ input[type='submit']:hover {
 	background-color: #0056a3;
 }
 
-/* Edit Mode Button */
-/* a { */
-/* Set color for anchor links */
-/* color: #0068c2; */
-/* Remove underline from links */
-/* text-decoration: none; */
-/* } */
-
 a:hover {
 	/* Add underline to links on hover */
 	text-decoration: underline;
@@ -378,12 +315,6 @@ a:hover {
 		/* Decrease font size for mobile view */
 		font-size: 1.3rem;
 	}
-
-	/* p, */
-	/* label { */
-	/* Decrease font size for mobile view */
-	/* font-size: 0.9rem; */
-	/* } */
 
 	input[type='text'],
 	input[type='email'] {
@@ -430,23 +361,14 @@ a:hover {
 		font-size: 1.6rem;
 	}
 
-	/* input[type='text'], */
-	/* textarea, */
-	/* select, */
-	/* input[type='file'] { */
-	/* Add more padding for inputs on desktop */
-	/* padding: 12px; */
-	/* } */
-
 	input[type='submit'] {
 		/* Add extra padding to submit button on desktop */
 		padding: 14px 22px;
 	}
 }
-/* END */
-/* 
-CONTACT PAGE 
-*/
+
+/* === Main Contact styles === */
+
 legend.wpforms-field-label {
 	display: none;
 }
@@ -463,15 +385,7 @@ legend.wpforms-field-label {
 	border-radius: 1rem;
 	box-sizing: border-box;
 }
-/* 
-  Targeting the label of a form field within WPForms.
-  This ensures the text color of the label is set to white, 
-  overriding any other color settings due to the use of !important.
-*/
 
-/* .wpforms-field-label { */
-/* color: white !important; */
-/* } */
 /* =====================
   WPForms Global Reset
 ===================== */
@@ -677,13 +591,67 @@ REGISTRATION SUCCESS
 .button:hover {
 	background: #0054a6; /* Changes the button color to a darker blue */
 }
-/* END */
 
-/* Visible on desktops and tablets */
-@media (min-width: 768px) {
-	.hide {
-		display: block;
-	}
+/* === Add new briefs styles === */
+
+.briefs-form {
+	background: #f9f9f9;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.briefs-form form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.briefs-form label {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	display: block;
+	color: #333;
+}
+
+.briefs-form input[type='text'],
+.briefs-form input[type='number'],
+.briefs-form input[type='date'],
+.briefs-form textarea {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	font-size: 1rem;
+	transition: border-color 0.3s;
+}
+
+.briefs-form input[type='text']:focus,
+.briefs-form input[type='number']:focus,
+.briefs-form input[type='date']:focus,
+.briefs-form textarea:focus {
+	border-color: #0068c2;
+	outline: none;
+}
+
+.briefs-form textarea {
+	min-height: 150px;
+	resize: vertical;
+}
+
+.briefs-form input[type='submit'] {
+	background-color: #0068c2;
+	color: #fff;
+	padding: 0.75rem 1.5rem;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.briefs-form input[type='submit']:hover {
+	background-color: #0050a0;
 }
 
 /* === 
@@ -787,25 +755,17 @@ Event Summery styles === */
 	}
 }
 
-/* END */
-
 /* === Login general styles === */
 
 /* Login Container */
-.login-container {
+/* .login-container {
 	max-width: 400px;
 	margin: 50px auto;
 	padding: 30px;
-	/* background-color: #000; */
 	border-radius: 10px;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
-}
-
-/* .site-logo { */
-/* text-align: center; */
-/* margin-bottom: 20px; */
-/* } */
+} */
 
 .site-logo img {
 	max-width: 150px;
@@ -930,18 +890,6 @@ Event Summery styles === */
 	text-decoration: underline;
 }
 
-/* Float Helper Class (if needed) */
-/* .float-left {
-	float: left;
-} */
-
-/* Clear Floats */
-/* .login-container::after { */
-/* content: ''; */
-/* display: table; */
-/* clear: both; */
-/* } */
-
 /* 
 MOBILE LOGIN
 */
@@ -959,6 +907,13 @@ MOBILE LOGIN
 }
 
 /* === Media general styles === */
+
+/* Visible on desktops and tablets */
+@media (min-width: 768px) {
+	.hide {
+		display: block;
+	}
+}
 
 @media (max-width: 768px) {
 	div.metabox .metabox__blog-home-link {
@@ -983,122 +938,109 @@ MOBILE LOGIN
 	.page-banner .page-banner__bg-image {
 		opacity: 0.5;
 	}
-	/* h1.page-banner__title {
-		font-size: 1.4rem;
-		margin-bottom: 0.8rem;
-	} */
-	.metabox {
-		display: block !important; /* Stack elements instead of inline */
-		padding: 8px 12px !important; /* Slightly reduce padding */
-		margin-bottom: 20px !important; /* Reduce bottom margin */
-		text-align: center;
-	}
-	div.metabox--position-up {
-		position: relative;
-		transform: translateY(0%);
-	}
-	.generic-content p,
-	.generic-content li {
-		font-size: 1rem !important;
-		line-height: 1.5;
-	}
-	.btn {
-		font-size: 1rem !important;
-		padding: 10px 20px !important;
-		text-align: center;
-	}
+}
+.metabox {
+	display: block !important; /* Stack elements instead of inline */
+	padding: 8px 12px !important; /* Slightly reduce padding */
+	margin-bottom: 20px !important; /* Reduce bottom margin */
+	text-align: center;
+}
+div.metabox--position-up {
+	position: relative;
+	transform: translateY(0%);
+}
+.generic-content p,
+.generic-content li {
+	font-size: 1rem !important;
+	line-height: 1.5;
+}
+.btn {
+	font-size: 1rem !important;
+	padding: 10px 20px !important;
+	text-align: center;
+}
 
-	/* 
+/* 
 	Header media styles */
 
-	.site-header {
-		z-index: 3;
-		padding: 3.5% 0;
-	}
+.site-header {
+	z-index: 3;
+	padding: 3.5% 0;
+}
 
-	/* footer media styles */
+/* footer media styles */
 
-	footer .float-left {
-		float: none;
-	}
-	ul.social-icons-list {
-		display: block;
-	}
+footer .float-left {
+	float: none;
+}
+ul.social-icons-list {
+	display: block;
+}
 
-	/* Front page media styles */
+/* Front page media styles */
 
-	.main-title {
-		font-size: 3em;
-	}
+.main-title {
+	font-size: 3em;
+}
 
-	.overlay-text {
-		top: 40%;
-	}
+.overlay-text {
+	top: 40%;
+}
 
-	/* Music Releases media */
+/* Music Releases media */
 
-	.track-heading {
-		font-size: 2rem; /* Smaller font size on mobile */
-	}
+.track-heading {
+	font-size: 2rem; /* Smaller font size on mobile */
+}
 
-	/* 
+/* 
 	Media for dashbord */
 
-	.dashboard-container {
-		max-width: 95%; /* Makes the container more responsive */
-		margin: 20px auto; /* Reduces margin for smaller screens */
-		padding: 15px; /* Adjusts padding for better spacing */
-	}
+.dashboard-container {
+	max-width: 95%; /* Makes the container more responsive */
+	margin: 20px auto; /* Reduces margin for smaller screens */
+	padding: 15px; /* Adjusts padding for better spacing */
+}
 
-	.dashboard-container h1 {
-		font-size: 1.5rem; /* Reduces heading size for mobile */
-	}
+.dashboard-container h1 {
+	font-size: 1.5rem; /* Reduces heading size for mobile */
+}
 
-	.dashboard-container p {
-		font-size: 1rem; /* Adjusts paragraph size for mobile readability */
-	}
+.dashboard-container p {
+	font-size: 1rem; /* Adjusts paragraph size for mobile readability */
+}
 
-	.dashboard-menu {
-		flex-direction: column; /* Stacks menu items vertically */
-		align-items: center; /* Centers menu items */
-	}
+.dashboard-menu {
+	flex-direction: column; /* Stacks menu items vertically */
+	align-items: center; /* Centers menu items */
+}
 
-	.dashboard-menu a {
-		width: 100%; /* Makes buttons full-width for better usability */
-		text-align: center; /* Centers text inside buttons */
-		padding: 12px; /* Adjusts padding for touch-friendly buttons */
-	}
+.dashboard-menu a {
+	width: 100%; /* Makes buttons full-width for better usability */
+	text-align: center; /* Centers text inside buttons */
+	padding: 12px; /* Adjusts padding for touch-friendly buttons */
+}
 
-	/* Registration page media styles */
-	/* .registration-container { */
-	/* padding: 15px;  */
-	/* } */
+.generic-content h2 {
+	font-size: 28px !important; /* Reduces font size of the heading */
+}
 
-	.generic-content h2 {
-		font-size: 28px !important; /* Reduces font size of the heading */
-	}
+.custom-registration-form input[type='submit'] {
+	font-size: 14px; /* Reduces font size of the submit button */
+	padding: 10px; /* Reduces padding of the submit button */
+}
+.agreement-message {
+	font-size: 0.625rem;
+}
 
-	/* .custom-registration-form label { */
-	/* font-size: 14px; */
-	/* } */
-
-	.custom-registration-form input[type='submit'] {
-		font-size: 14px; /* Reduces font size of the submit button */
-		padding: 10px; /* Reduces padding of the submit button */
-	}
-	.agreement-message {
-		font-size: 0.625rem;
-	}
-
-	.custom-registration-form p {
-		font-size: 0.625rem;
-	}
-	/* media for login page */
-	.login-container {
-		padding: 20px;
-		/* background-color: white; */
-		margin: 0;
-	}
+.custom-registration-form p {
+	font-size: 0.625rem;
+}
+/* media for login page */
+.login-container {
+	padding: 20px;
+	/* background-color: white; */
+	margin: 0;
 }
 
 @media (max-width: 480px) {

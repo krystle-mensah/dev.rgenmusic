@@ -103,26 +103,59 @@ function ourHeaderUrl()
 add_filter('login_headertitle', 'ourLoginTitle');
 
 // Function that changes the login page logo's title attribute.
-function ourLoginTitle()
+//function ourLoginTitle()
+//{
+// Returns the site's name (from WordPress settings) as the title for the login logo.
+//return get_bloginfo('name');
+//}
+
+//BRIEFS
+
+// Function to notify the post author when their 'brief' post is published
+function notify_user_brief_published($new_status, $old_status, $post)
 {
-  // Returns the site's name (from WordPress settings) as the title for the login logo.
-  return get_bloginfo('name');
+  // Exit the function if the post type is not 'brief'
+  if ($post->post_type !== 'brief') {
+    return;
+  }
+
+  // Only proceed if the post is being published (from a non-published state)
+  if ($old_status !== 'publish' && $new_status === 'publish') {
+    $post_id = $post->ID;
+
+    // Get the ID of the post author
+    $author_id = $post->post_author;
+
+    // Retrieve the author's user data
+    $user_info = get_userdata($author_id);
+
+    if ($user_info) {
+      // Extract the author's email and display name
+      $user_email = $user_info->user_email;
+      $user_name = $user_info->display_name;
+
+      // Get the post title and permalink
+      $brief_title = get_the_title($post_id);
+      $brief_link = get_permalink($post_id);
+
+      // Prepare the email content
+      $subject = 'Your brief has been published on rgenmusic!';
+      $message = "Hi $user_name,\n\nGood news! Your brief titled \"$brief_title\" has been reviewed and published on rgenmusic.com.\n\nYou can view it here: $brief_link\n\nThanks for contributing!";
+
+      // Get the admin email address to BCC in the notification
+      $admin_email = get_option('admin_email');
+
+      // Set the email headers (plain text + BCC to admin)
+      $headers = array(
+        'Content-Type: text/plain; charset=UTF-8',
+        'Bcc: ' . $admin_email
+      );
+
+      // Send the email notification to the user
+      wp_mail($user_email, $subject, $message, $headers);
+    }
+  }
 }
 
-// Function to add custom rewrite rules
-// function custom_rewrite_rules()
-// {
-//   // Adds a rewrite rule to make "music-releases/" point to the 'music_release' post type archive page
-//   add_rewrite_rule('^music-releases/?$', 'index.php?post_type=music_release', 'top');
-
-//   // Add other rewrite rules as needed
-// }
-
-// // Hook the function into WordPress initialization
-// add_action('init', 'custom_rewrite_rules');
-//This ensures that when you activate your theme, the rewrite rules are refreshed.
-// function rgenmusic_flush_rewrite_rules()
-// {
-//   flush_rewrite_rules();
-// }
-// register_activation_hook(__FILE__, 'rgenmusic_flush_rewrite_rules');
+// Hook the function into the post status transition process
+add_action('transition_post_status', 'notify_user_brief_published', 10, 3);

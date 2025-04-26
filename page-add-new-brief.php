@@ -18,7 +18,7 @@ if (isset($_POST['submit_brief']) && isset($_POST['brief_nonce']) && wp_verify_n
   $brief_title       = sanitize_text_field($_POST['brief_title']);
   $musician_type     = sanitize_text_field($_POST['musician_type']);
   $brief_description = sanitize_textarea_field($_POST['brief_description']);
-  $genre             = sanitize_text_field($_POST['genre']);
+  $genre = isset($_POST['genre']) ? sanitize_text_field($_POST['genre']) : '';
   $brief_deadline    = sanitize_text_field($_POST['brief_deadline']);
   $brief_budget      = sanitize_text_field($_POST['brief_budget']);
 
@@ -37,12 +37,6 @@ if (isset($_POST['submit_brief']) && isset($_POST['brief_nonce']) && wp_verify_n
     update_post_meta($post_id, 'genre', $genre);
     update_post_meta($post_id, 'brief_deadline', $brief_deadline);
     update_post_meta($post_id, 'brief_budget', $brief_budget);
-
-    // Get post meta
-    $musician_type = get_post_meta(get_the_ID(), 'musician_type', true);
-    $genre = get_post_meta(get_the_ID(), 'genre', true);
-    $brief_deadline = get_post_meta(get_the_ID(), 'brief_deadline', true);
-    $brief_budget = get_post_meta(get_the_ID(), 'brief_budget', true);
 
     // Optional: Show a success message
     echo '<div class="notice success">Brief submitted successfully!</div>';
@@ -77,13 +71,21 @@ if (isset($_POST['submit_brief']) && isset($_POST['brief_nonce']) && wp_verify_n
 }
 
 // Set default values to avoid undefined variable warnings
-$brief_title = '';
-$musician_type = '';
-$genre = '';
-$brief_deadline = '';
-$brief_budget = '';
-?>
+$brief_title       = '';
+$musician_type     = '';
+$brief_description = '';
+$genre             = '';
+$brief_deadline    = '';
+$brief_budget      = '';
 
+?>
+<?php
+$homepage_briefs = new WP_Query(array(
+  // 'posts_per_page' => 2,
+  'post_type' => 'brief'
+
+));
+?>
 <?php while (have_posts()) {
   the_post(); ?>
   <div class="page-banner">
@@ -94,32 +96,39 @@ $brief_budget = '';
   </div>
 
   <div class="container container--narrow page-section">
-    <div class="generic-content">
+    <div class="briefs-form">
       <form method="post" action="">
 
-        <!-- brief title -->
-        <label for="brief_title"><strong>Title:</strong><?php echo esc_html($brief_title); ?></label>
-        <input type="text" name="brief_title" id="brief_title" required>
+        <!-- Brief title -->
+        <label for="brief_title"><strong>Title:</strong></label>
+        <input type="text" name="brief_title" id="brief_title" required value="<?php echo esc_attr($brief_title); ?>">
 
         <!-- musician type -->
-        <label><strong>What type of musician are you looking for:</strong> <?php echo esc_html($musician_type); ?></label>
-        <input type="text" name="musician_type" id="musician_type" required>
+        <label for="musician_type"><strong>What type of musician are you looking for:</strong></label>
+        <input type="text" name="musician_type" id="musician_type" required value="<?php echo esc_html($musician_type); ?>">
 
-        <!-- genre -->
-        <label><strong>Genre:</strong> <?php echo esc_html($genre); ?></label>
-        <input type="checkbox" name="genre[]" value="<?php echo esc_attr($value); ?>"> <?php echo esc_html($label); ?>
+        <!-- Genre -->
+        <label for="genre"><strong>Genre:</strong></label>
+        <input type="text" name="genre" id="genre" required value="<?php echo esc_attr($genre); ?>">
 
-        <!-- deadline -->
-        <label><strong>Brief Deadline:</strong> <?php echo esc_html($brief_deadline); ?></label>
-        <input type="date" name="brief_deadline" id="brief_deadline" required>
+        <!-- Deadline -->
+        <div>
+          <label for="brief_deadline"><strong>Brief Deadline:</strong></label>
+          <input type="date" name="brief_deadline" id="brief_deadline" value="<?php echo esc_attr($brief_deadline); ?>" required>
+        </div>
 
         <!-- Budget -->
-        <p><strong>Budget:</strong> <?php echo esc_html($brief_budget); ?></p>
-        <input type="number" name="brief_budget" id="brief_budget" required>
+        <div>
+          <p>How much can you pay?:</p>
+          <label for="brief_budget"><strong>Budget:</strong></label>
+          <input type="number" name="brief_budget" id="brief_budget" value="<?php echo esc_attr($brief_budget); ?>" required>
+        </div>
 
         <!-- Description -->
-        <label><strong>Brief description:</strong> <?php echo esc_html($brief_description); ?></label>
-        <textarea name="brief_description" id="brief_description" required></textarea>
+        <div>
+          <label for="brief_description"><strong>Brief Description:</strong></label>
+          <textarea name="brief_description" id="brief_description" required><?php echo esc_textarea($brief_description); ?></textarea>
+        </div>
 
         <?php wp_nonce_field('submit_brief_action', 'brief_nonce'); ?>
 
@@ -127,6 +136,7 @@ $brief_budget = '';
       </form>
     </div>
   </div>
+
 <?php }
 get_footer();
 ?>
