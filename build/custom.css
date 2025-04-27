@@ -757,16 +757,6 @@ Event Summery styles === */
 
 /* === Login general styles === */
 
-/* Login Container */
-/* .login-container {
-	max-width: 400px;
-	margin: 50px auto;
-	padding: 30px;
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	box-sizing: border-box;
-} */
-
 .site-logo img {
 	max-width: 150px;
 }
@@ -813,7 +803,6 @@ Event Summery styles === */
 
 /* Form Labels */
 .custom-login-form label {
-	/* font-size: 14px; */
 	color: #333;
 	margin-bottom: 5px;
 }
@@ -825,7 +814,6 @@ Event Summery styles === */
 	padding: 12px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	/* font-size: 16px; */
 	box-sizing: border-box;
 	transition: border-color 0.3s ease;
 }
@@ -890,22 +878,6 @@ Event Summery styles === */
 	text-decoration: underline;
 }
 
-/* 
-MOBILE LOGIN
-*/
-@media (max-width: 768px) {
-	.custom-login-form input[type='text'],
-	.custom-login-form input[type='password'],
-	.custom-login-form input[type='submit'] {
-		padding: 14px;
-		font-size: 18px;
-	}
-
-	.login-container p {
-		font-size: 12px;
-	}
-}
-
 /* === Media general styles === */
 
 /* Visible on desktops and tablets */
@@ -916,6 +888,13 @@ MOBILE LOGIN
 }
 
 @media (max-width: 768px) {
+	/*media for header*/
+
+	.site-header {
+		z-index: 3;
+		padding: 2.5% 0;
+	}
+
 	div.metabox .metabox__blog-home-link {
 		display: block;
 	}
@@ -958,14 +937,6 @@ div.metabox--position-up {
 	font-size: 1rem !important;
 	padding: 10px 20px !important;
 	text-align: center;
-}
-
-/* 
-	Header media styles */
-
-.site-header {
-	z-index: 3;
-	padding: 3.5% 0;
 }
 
 /* footer media styles */
@@ -1036,11 +1007,24 @@ ul.social-icons-list {
 .custom-registration-form p {
 	font-size: 0.625rem;
 }
+
 /* media for login page */
+
 .login-container {
 	padding: 20px;
 	/* background-color: white; */
 	margin: 0;
+}
+
+.custom-login-form input[type='text'],
+.custom-login-form input[type='password'],
+.custom-login-form input[type='submit'] {
+	padding: 14px;
+	font-size: 18px;
+}
+
+.login-container p {
+	font-size: 12px;
 }
 
 @media (max-width: 480px) {

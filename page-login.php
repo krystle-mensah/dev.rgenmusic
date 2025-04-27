@@ -53,68 +53,85 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
 ?>
 
 <!-- Start of login form container -->
-<div class="login-container">
-  <?php
-  // Check if the 'the_custom_logo' function exists and a custom logo is set for the site
-  if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
-    <!-- If a custom logo exists, display it inside a div with a class 'site_logo' -->
-    <div class="site-logo hide">
-      <?php the_custom_logo(); // Output the custom logo 
-      ?>
-    </div>
-  <?php } else { ?>
-    <!-- If no custom logo is set, display the site name as a heading with a link to the homepage -->
-    <h1 class="school-logo-text">
-      <a href="<?php echo site_url(); ?>"><strong>Rgen</strong> Music</a>
-    </h1>
-  <?php } ?>
 
-  <!-- Check if there is a login error and display the error message -->
-  <?php
-  /*
+<?php
+// Check if the 'the_custom_logo' function exists and a custom logo is set for the site
+if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
+  <!-- If a custom logo exists, display it inside a div with a class 'site_logo' -->
+  <div class="site-logo hide">
+    <?php the_custom_logo(); // Output the custom logo 
+    ?>
+  </div>
+<?php } else { ?>
+  <!-- If no custom logo is set, display the site name as a heading with a link to the homepage -->
+  <h1 class="school-logo-text">
+    <a href="<?php echo site_url(); ?>"><strong>Rgen</strong> Music</a>
+  </h1>
+<?php } ?>
+
+<!-- Check if there is a login error and display the error message -->
+<?php
+/*
 if (isset($_GET['login_error'])) {
     echo "<p class='error-message' style='color:red;'>" . esc_html(urldecode($_GET['login_error'])) . "</p>";
 }
 */
-  // Check if there is a login error and display the error message 
+// Check if there is a login error and display the error message 
 
-  if (isset($_GET['login_error'])) {
-    echo "<p class='login-error-message'>" . esc_html(urldecode($_GET['login_error'])) . "</p>";
-  }
+if (isset($_GET['login_error'])) {
+  echo "<p class='login-error-message'>" . esc_html(urldecode($_GET['login_error'])) . "</p>";
+}
 
+?>
 
+<div class="page-banner">
 
-  ?>
-
-  <!-- Custom login form -->
-  <form method="post" class="custom-login-form">
-    <!-- Nonce field to verify the form submission (security) -->
-    <?php wp_nonce_field('login_user_action', 'rgenmusic_login_nonce'); ?>
-
-    <!-- Username input field -->
-    <label for="username">Username or Email</label>
-    <input type="text" name="username" id="username" required aria-label="Username">
-
-    <!-- Password input field -->
-    <label for="password">Password:</label>
-    <input type="password" name="password" id="password" required aria-label="Password">
-    <!-- Button to toggle password visibility -->
-    <button type="button" onclick="togglePassword()" aria-label="Show/Hide password">Show/Hide</button>
-
-    <!-- Remember me checkbox -->
-    <label>
-      <input type="checkbox" name="remember_me" aria-label="Remember me"> Remember Me
-    </label>
-
-    <!-- Submit button for the form -->
-    <input type="submit" name="login_user" value="Login">
-  </form>
-
-  <!-- Forgot password link -->
-  <p><a href="<?php echo wp_lostpassword_url(); ?>">Forgot your password?</a></p>
-  <!-- Register link for users without an account -->
-  <p>Don't have an account? <a href="<?php echo esc_url(home_url('index.php/registration/')); ?>">Register here</a></p>
+  <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/pageBanner.jpg') ?>);"></div>
+  <div class="page-banner__content container container--narrow">
+    <h1 class="page-banner__title"><?php the_title(); ?></h1>
+    <div class="page-banner__intro">
+      <!-- <p>THIS IS A PAGE </p> -->
+    </div>
+  </div>
 </div>
+
+<div class="container container--narrow page-section">
+
+  <div class="generic-content">
+    <!-- Custom login form -->
+    <form method="post" class="custom-login-form">
+      <!-- Nonce field to verify the form submission (security) -->
+      <?php wp_nonce_field('login_user_action', 'rgenmusic_login_nonce'); ?>
+
+      <!-- Username input field -->
+      <label for="username">Username or Email</label>
+      <input type="text" name="username" id="username" required aria-label="Username">
+
+      <!-- Password input field -->
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required aria-label="Password">
+      <!-- Button to toggle password visibility -->
+      <button type="button" onclick="togglePassword()" aria-label="Show/Hide password">Show/Hide</button>
+
+      <!-- Remember me checkbox -->
+      <label>
+        <input type="checkbox" name="remember_me" aria-label="Remember me"> Remember Me
+      </label>
+
+      <!-- Submit button for the form -->
+      <input type="submit" name="login_user" value="Login">
+    </form>
+
+    <!-- Forgot password link -->
+    <p><a href="<?php echo wp_lostpassword_url(); ?>">Forgot your password?</a></p>
+    <!-- Register link for users without an account -->
+    <p>Don't have an account? <a href="<?php echo esc_url(home_url('index.php/registration/')); ?>">Register here</a></p>
+  </div>
+</div>
+
+
+
+
 
 <!-- This JavaScript function toggles the visibility of the password -->
 <script>
