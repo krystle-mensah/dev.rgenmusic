@@ -1,4 +1,14 @@
 <?php
+// You need to go through this file and make sure your defining your functions properly. here is an example.
+// 1. Define the function
+// function ourLoginTitle() {
+//     return 'Your Site Title';
+// }
+
+// 2. Hook it into WordPress
+//add_filter('login_headertext', 'ourLoginTitle');
+
+
 // Attempt to start output buffering with Gzip compression.
 // If "ob_gzhandler" is available, it will compress output to reduce bandwidth usage.
 if (!ob_start("ob_gzhandler")) {
@@ -29,30 +39,22 @@ function rgenmusic_features()
 // Hook into the 'after_setup_theme' action to initialize theme features
 add_action('after_setup_theme', 'rgenmusic_features');
 
+//File versioning: Added filemtime to all CSS and JS enqueues to make sure the browser fetches the latest version when the files change.
+
 // Hook the script enqueue function into 'wp_enqueue_scripts' to ensure proper loading.
-add_action('wp_enqueue_scripts', 'rgenmusic_scripts');
 function rgenmusic_scripts()
 {
-  wp_enqueue_script('main-rgenmusic-js', get_theme_file_uri('/build/index.js'), array('jquery'), '1.0', true);
-  // Enqueues a Google Fonts stylesheet for Bebas Neue and Open Sans fonts.
-  wp_enqueue_style('custom-google-fonts', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet');
 
-  // Enqueues Font Awesome CSS for adding icons to the login page.
+  wp_enqueue_script('main-rgenmusic-js', get_theme_file_uri('/build/index.js'), array('jquery'), filemtime(get_theme_file_path('/build/index.js')), true);
+  wp_enqueue_style('custom-google-fonts', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
   wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
-  // Enqueues a custom CSS file specific to the Rgenmusic theme (build/custom.css).
-  wp_enqueue_style('rgenmusic-custom', get_theme_file_uri('/build/custom.css'));
-
-  // Enqueues the main style file for the Rgenmusic theme (build/style-index.css).
-  wp_enqueue_style('rgenmusic-style', get_theme_file_uri('/build/style-index.css'));
-
-  // Enqueues an additional custom stylesheet for extra styles (build/index.css).
-  wp_enqueue_style('rgenmusic-extra-style', get_theme_file_uri('/build/index.css'));
+  wp_enqueue_style('rgenmusic-custom', get_theme_file_uri('/build/custom.css'), array(), filemtime(get_theme_file_path('/build/custom.css')));
+  wp_enqueue_style('rgenmusic-style', get_theme_file_uri('/build/style-index.css'), array(), filemtime(get_theme_file_path('/build/style-index.css')));
+  wp_enqueue_style('rgenmusic-extra-style', get_theme_file_uri('/build/index.css'), array(), filemtime(get_theme_file_path('/build/index.css')));
 }
+// Now hook the function into 'wp_enqueue_scripts' to ensure it's called at the right time.
+add_action('wp_enqueue_scripts', 'rgenmusic_scripts');
 
-//Verify that thumbnails are enabled in your WordPress theme.
-//add_theme_support('post-thumbnails');
-// add_action('pre_get_posts', 'rgenmusic_adjust_queries');
 // Define a function named rgenmusic_adjust_queries that modifies WordPress queries
 function rgenmusic_adjust_queries($query)
 {
@@ -88,26 +90,64 @@ function rgenmusic_adjust_queries($query)
 // This ensures the function is called before WordPress retrieves posts
 add_action('pre_get_posts', 'rgenmusic_adjust_queries');
 
-// CUSTOMISE LOGIN SCREEN
+// CUSTOMISE LOGIN 
+
 // This filter changes the URL of the login page logo link.
-add_filter('login_headerurl', 'ourHeaderUrl');
 // Function that will be called to modify the login header URL.
 function ourHeaderUrl()
 {
   // Returns the site's home URL (using site_url()) and ensures it is a safe URL using esc_url().
   return esc_url(site_url('/'));
 }
-// END
+add_filter('login_headerurl', 'ourHeaderUrl');
 
-// This filter modifies the title attribute of the WordPress login page logo.
-add_filter('login_headertitle', 'ourLoginTitle');
+//LOGIN PASSWORD
 
-// Function that changes the login page logo's title attribute.
-//function ourLoginTitle()
-//{
-// Returns the site's name (from WordPress settings) as the title for the login logo.
-//return get_bloginfo('name');
-//}
+// Custom function to redirect WordPress password reset links to a custom reset page
+function rgen_redirect_password_reset()
+{
+  // Check if the current request is for the default WordPress password reset handler
+  if (
+    strpos($_SERVER['REQUEST_URI'], 'wp-login.php') !== false && // URL contains 'wp-login.php'
+    isset($_GET['action']) && $_GET['action'] === 'rp' &&        // Action is 'rp' (reset password)
+    isset($_GET['key']) &&                                       // Reset key is present
+    isset($_GET['login'])                                        // Login/username is present
+  ) {
+    // Build the custom reset password URL on the frontend (e.g., /reset-password)
+    $reset_url = home_url('/reset-password');
+
+    // Append 'key' and 'login' as query parameters, sanitized for security
+    $reset_url = add_query_arg([
+      'key' => sanitize_text_field($_GET['key']),
+      'login' => sanitize_text_field($_GET['login']),
+    ], $reset_url);
+
+    // Redirect the user to the custom reset password page
+    wp_redirect($reset_url);
+    exit; // Stop further execution to ensure redirect works immediately
+  }
+}
+// Hook this function to 'init' so it runs early during WordPress execution
+add_action('init', 'rgen_redirect_password_reset');
+
+// Custom reset password email message
+function rgen_custom_password_reset_email($message, $key, $user_login, $user_data)
+{
+  $reset_url = home_url('/reset-password');
+  $reset_url = add_query_arg([
+    'key' => $key,
+    'login' => rawurlencode($user_login),
+  ], $reset_url);
+
+  $message  = "Hi,\n\n";
+  $message .= "You requested to reset your password for your account.\n";
+  $message .= "Click the link below to reset it:\n\n";
+  $message .= $reset_url . "\n\n";
+  $message .= "If you didn’t request this, you can ignore this email.";
+
+  return $message;
+}
+add_filter('retrieve_password_message', 'rgen_custom_password_reset_email', 10, 4);
 
 //BRIEFS
 
