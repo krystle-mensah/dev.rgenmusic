@@ -1,14 +1,4 @@
 <?php
-// You need to go through this file and make sure your defining your functions properly. here is an example.
-// 1. Define the function
-// function ourLoginTitle() {
-//     return 'Your Site Title';
-// }
-
-// 2. Hook it into WordPress
-//add_filter('login_headertext', 'ourLoginTitle');
-
-
 // Attempt to start output buffering with Gzip compression.
 // If "ob_gzhandler" is available, it will compress output to reduce bandwidth usage.
 if (!ob_start("ob_gzhandler")) {
@@ -39,12 +29,9 @@ function rgenmusic_features()
 // Hook into the 'after_setup_theme' action to initialize theme features
 add_action('after_setup_theme', 'rgenmusic_features');
 
-//File versioning: Added filemtime to all CSS and JS enqueues to make sure the browser fetches the latest version when the files change.
-
-// Hook the script enqueue function into 'wp_enqueue_scripts' to ensure proper loading.
 function rgenmusic_scripts()
 {
-
+  //File versioning: Added filemtime to all CSS and JS enqueues to make sure the browser fetches the latest version when the files change.
   wp_enqueue_script('main-rgenmusic-js', get_theme_file_uri('/build/index.js'), array('jquery'), filemtime(get_theme_file_path('/build/index.js')), true);
   wp_enqueue_style('custom-google-fonts', 'https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
   wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -52,7 +39,6 @@ function rgenmusic_scripts()
   wp_enqueue_style('rgenmusic-style', get_theme_file_uri('/build/style-index.css'), array(), filemtime(get_theme_file_path('/build/style-index.css')));
   wp_enqueue_style('rgenmusic-extra-style', get_theme_file_uri('/build/index.css'), array(), filemtime(get_theme_file_path('/build/index.css')));
 }
-// Now hook the function into 'wp_enqueue_scripts' to ensure it's called at the right time.
 add_action('wp_enqueue_scripts', 'rgenmusic_scripts');
 
 // Define a function named rgenmusic_adjust_queries that modifies WordPress queries
@@ -90,16 +76,18 @@ function rgenmusic_adjust_queries($query)
 // This ensures the function is called before WordPress retrieves posts
 add_action('pre_get_posts', 'rgenmusic_adjust_queries');
 
-// CUSTOMISE LOGIN 
+/**
+ * Customising Login
+ */
 
 // This filter changes the URL of the login page logo link.
 // Function that will be called to modify the login header URL.
-function ourHeaderUrl()
-{
-  // Returns the site's home URL (using site_url()) and ensures it is a safe URL using esc_url().
-  return esc_url(site_url('/'));
-}
-add_filter('login_headerurl', 'ourHeaderUrl');
+//function ourHeaderUrl()
+//{
+// Returns the site's home URL (using site_url()) and ensures it is a safe URL using esc_url().
+//return esc_url(site_url('/'));
+//}
+//add_filter('login_headerurl', 'ourHeaderUrl');
 
 //LOGIN PASSWORD
 
@@ -149,7 +137,9 @@ function rgen_custom_password_reset_email($message, $key, $user_login, $user_dat
 }
 add_filter('retrieve_password_message', 'rgen_custom_password_reset_email', 10, 4);
 
-//BRIEFS
+/**
+ * Briefs functions
+ */
 
 // Function to notify the post author when their 'brief' post is published
 function notify_user_brief_published($new_status, $old_status, $post)
