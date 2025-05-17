@@ -802,7 +802,9 @@ body.login {
 	position: absolute;
 	top: 6px;
 	right: 16px;
+	/* background: none; */
 }
+
 @media (min-width: 530px) {
 	.site-header__search-trigger {
 		top: 4px;

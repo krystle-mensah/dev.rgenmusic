@@ -8,6 +8,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+  <!-- This link helps people using screen readers or keyboard navigation to skip directly to the main content of the page, instead of going through menus or headers first. It's hidden visually but readable by screen readers. -->
+  <a class="skip-link screen-reader-text" href="#main-content">Skip to content</a>
+
   <header class="site-header">
     <div class="container">
       <?php
@@ -17,48 +20,78 @@
         </div>
       <?php } else { ?>
         <h1 class="school-logo-text float-left">
-          <a href="<?php echo site_url(); ?>"><strong>Rgen</strong> Music</a>
+          <!-- check the below code -->
+          <a href="<?php echo esc_url(site_url()); ?>"><strong>Rgen</strong> Music</a>
+
         </h1>
       <?php } ?>
 
-      <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span>
-      <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
+      <!-- <button
+        type="button"
+        class="js-search-trigger site-header__search-trigger"
+        aria-label="Open search">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button> -->
+
+      <!-- <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
+      <!-- <button
+        type="button"
+        class="site-header__menu-trigger"
+        aria-label="Open menu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button> -->
+
+      <!-- <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i> -->
+
       <div class="site-header__menu group">
-        <nav class="main-navigation">
-          <ul>
-            <?php if (is_user_logged_in()) { ?>
-              <!-- If the user is logged in, show the logged-in menu -->
-              <?php wp_nav_menu(array(
-                'theme_location' => 'headerMenuLoggedIn',  // Menu location registered for logged-in users
-                'container' => false,
-                //'menu_id'   => false,
-                //'menu_class' => '', // Removes class from <ul>
-                'items_wrap'     => '%3$s', // Outputs only the menu items without <ul>
-              )); ?>
-              <!-- Display the Logout button -->
-              <a href="<?php echo wp_logout_url();  ?>" class="btn btn--small btn--orange float-left btn--with-photo">
-                <span class="site-header__avatar"><?php echo get_avatar(get_current_user_id(), 60); ?></span>
-                <span class="btn__text">Log Out</span>
-              </a>
-            <?php } else { ?>
-              <!-- If the user is not logged in, show the logged-out menu -->
-              <?php wp_nav_menu(array(
-                'theme_location' => 'headerMenuLoggedOut',  // Menu location registered for logged-out users
-                'container' => false,
-                //'menu_id'   => false, // Set to an empty string to remove the <ul> ID
-                //'menu_class' => false, // Removes class from <ul>
-                'items_wrap'     => '%3$s', // Outputs only the menu items without <ul>
-              )); ?>
-              <!-- Display the Login and Sign Up buttons -->
-              <a href="<?php echo site_url('index.php/login'); ?>" class="btn btn--small btn--orange float-left push-right">Login</a>
+        <?php
+        if (is_user_logged_in()) {
+          ob_start();
+          wp_nav_menu(array(
+            'theme_location' => 'headerMenuLoggedIn',
+            'container' => 'nav',
+            'container_class' => 'main-navigation',
+            'menu_class' => 'menu',
+          ));
+          $menu = ob_get_clean();
+          $menu = str_replace('<nav', '<nav role="navigation" aria-label="Main Navigation"', $menu);
+          echo $menu;
+        ?>
+          <a href="<?php echo esc_url(wp_logout_url()); ?>" class="btn btn--small btn--orange float-left btn--with-photo">
+            <span class="btn__text">Log Out</span>
+          </a>
+        <?php } else {
+          ob_start();
+          wp_nav_menu(array(
+            'theme_location' => 'headerMenuLoggedOut',
+            'container' => 'nav',
+            'container_class' => 'main-navigation',
+            'menu_class' => 'menu',
+          ));
+          $menu = ob_get_clean();
+          $menu = str_replace('<nav', '<nav role="navigation" aria-label="Main Navigation"', $menu);
+          echo $menu;
+        ?>
+          <?php
+          /* <a href="<?php echo site_url('index.php/login'); ?>" class="btn btn--small btn--orange float-left push-right">Login</a> */
+          ?>
 
-              <a href="<?php echo site_url('index.php/registration'); ?>" class="btn btn--small btn--dark-orange float-left">Sign Up</a>
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('login'))); ?>" class="btn btn--small btn--orange float-left push-right">Login</a>
+          <a href="<?php echo esc_url(get_permalink(get_page_by_path('registration'))); ?>" class="btn btn--small btn--dark-orange float-left">Sign Up</a>
 
-            <?php } ?>
-            <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span>
-          </ul>
-        </nav>
+          <?php
+          /*   <a href="<?php echo esc_url(site_url('index.php/login')); ?>" class="btn btn--small btn--orange float-left push-right">Login</a>
+          <a href="<?php echo esc_url(site_url('index.php/registration')); ?>" class="btn btn--small btn--dark-orange float-left">Sign Up</a>*/
+          ?>
+
+        <?php } ?>
+        <!-- <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
+        <!-- <button
+          type="button"
+          class="search-trigger js-search-trigger"
+          aria-label="Open search">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button> -->
       </div>
     </div>
   </header>
-</body>
