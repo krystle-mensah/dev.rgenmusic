@@ -84,8 +84,6 @@ function rgenmusic_scripts()
 }
 add_action('wp_enqueue_scripts', 'rgenmusic_scripts');
 
-// Login
-
 // -----------------------------------------------------------------------------
 // Adjust Archive Queries for Custom Post Type: 'music_release'
 // -----------------------------------------------------------------------------
@@ -108,6 +106,8 @@ function rgenmusic_adjust_queries($query)
   }
 }
 add_action('pre_get_posts', 'rgenmusic_adjust_queries');
+
+//LOGIN
 
 // -----------------------------------------------------------------------------
 // Custom Password Reset Redirection to Branded Page
@@ -161,6 +161,131 @@ function rgen_custom_password_reset_email($message, $key, $user_login, $user_dat
   return $message;
 }
 add_filter('retrieve_password_message', 'rgen_custom_password_reset_email', 10, 4);
+
+
+//Redirect wp-login.php Requests to Your Custom Login Page
+
+function rgen_redirect_wp_login()
+{
+  $request_uri = $_SERVER['REQUEST_URI'];
+
+  // Allow AJAX, cron, and REST API requests to go through
+  if (
+    defined('DOING_AJAX') && DOING_AJAX ||
+    defined('DOING_CRON') && DOING_CRON ||
+    strpos($request_uri, 'wp-json') !== false
+  ) {
+    return;
+  }
+
+  // Redirect wp-login.php access
+  if (strpos($request_uri, 'wp-login.php') !== false) {
+    wp_redirect(home_url('/login')); // Replace with your custom login page slug
+    exit;
+  }
+}
+add_action('init', 'rgen_redirect_wp_login');
+
+//Redirect wp-admin Access if Not Logged In
+function rgen_redirect_wp_admin_if_not_logged_in()
+{
+  if (
+    is_admin() &&
+    !is_user_logged_in() &&
+    !(defined('DOING_AJAX') && DOING_AJAX)
+  ) {
+    wp_redirect(home_url('/login')); // Match your login page slug
+    exit;
+  }
+}
+add_action('init', 'rgen_redirect_wp_admin_if_not_logged_in');
+
+
+//Hide the Admin Bar for Non-Admins
+// this is for every user
+function rgen_hide_admin_bar()
+{
+  if (!current_user_can('administrator') && !is_admin()) {
+    show_admin_bar(false);
+  }
+}
+add_action('after_setup_theme', 'rgen_hide_admin_bar');
+
+// //Optional: Create a Slug-Based Login Access Key
+// function rgen_secure_custom_login_access() {
+//     $allowed_key = 'letmein'; // Change this
+//     $requested_url = $_SERVER['REQUEST_URI'];
+
+//     if (strpos($requested_url, '/login') !== false) {
+//         if (!isset($_GET['key']) || $_GET['key'] !== $allowed_key) {
+//             wp_redirect(home_url());
+//             exit;
+//         }
+//     }
+// }
+// add_action('template_redirect', 'rgen_secure_custom_login_access');
+
+// -----------------------------------------------------------------------------
+// REGISTRATION 
+
+//This tells WordPress how to interpret URLs like /login-key/some-token.
+function rgen_register_login_key_rewrite()
+{
+  add_rewrite_rule(
+    '^login-key/([^/]+)/?$',
+    'index.php?login_key_token=$matches[1]',
+    'top'
+  );
+}
+add_action('init', 'rgen_register_login_key_rewrite');
+
+//This lets WordPress recognize login_key_token as a valid variable.
+function rgen_add_query_vars($vars)
+{
+  $vars[] = 'login_key_token';
+  return $vars;
+}
+add_filter('query_vars', 'rgen_add_query_vars');
+
+//Intercept the Request and Handle Login
+function rgen_process_login_key_redirect()
+{
+  $token = get_query_var('login_key_token');
+
+  if ($token) {
+    global $wpdb;
+
+    $user_id = $wpdb->get_var(
+      $wpdb->prepare(
+        "SELECT user_id FROM $wpdb->usermeta WHERE meta_key = 'rgen_login_key' AND meta_value = %s",
+        $token
+      )
+    );
+
+    if ($user_id) {
+      $expires = get_user_meta($user_id, 'rgen_login_key_expires', true);
+      $current_time = time();
+
+      // Remove token regardless of expiration
+      delete_user_meta($user_id, 'rgen_login_key');
+      delete_user_meta($user_id, 'rgen_login_key_expires');
+
+      if ($expires && $current_time <= $expires) {
+        wp_set_auth_cookie($user_id, true); // Log in the user
+        wp_redirect(home_url('/profile'));
+        exit;
+      } else {
+        wp_redirect(home_url('/login?error=expired'));
+        exit;
+      }
+    } else {
+      wp_redirect(home_url('/login?error=invalid'));
+      exit;
+    }
+  }
+}
+
+
 
 // Brief
 

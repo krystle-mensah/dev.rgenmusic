@@ -476,8 +476,7 @@ legend.wpforms-field-label {
 	margin-bottom: 1.5rem;
 }
 
-/*
-Main Registration page styles === */
+/* === Main Registration page styles === */
 
 .custom-registration-form p {
 	font-size: 0.75rem;
@@ -495,19 +494,6 @@ Main Registration page styles === */
 	font-size: 0.9rem;
 }
 
-/* h2 { */
-/* text-align: center;  */
-/* color: #0068c2;  */
-/* } */
-
-/* Styling for labels inside the custom registration form */
-/* .custom-registration-form label { */
-/* display: block;  */
-/* font-weight: bold;  */
-/* margin-bottom: 8px; Adds space below the label */
-/* color: #333; Sets the label text color to dark gray */
-/* } */
-
 /* Styling for input fields and select elements inside the custom registration form */
 .custom-registration-form input {
 	width: 100%; /* Makes inputs and selects take up the full width of the container */
@@ -517,14 +503,6 @@ Main Registration page styles === */
 	border-radius: 4px; /* Rounds the corners of the fields */
 	box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
-
-/* Styling specific to text, email, password input fields and select elements */
-/* .custom-registration-form input[type='password'], */
-/* .custom-registration-form input[type='text'], */
-/* .custom-registration-form input[type='email'], */
-/* .custom-registration-form select { */
-/* font-size: 16px; Sets the font size to 16px */
-/* } */
 
 /* Styling for the submit button */
 .custom-registration-form input[type='submit'] {
@@ -543,19 +521,6 @@ Main Registration page styles === */
 	background-color: #0051a2; /* Changes the background color to a darker blue on hover */
 }
 
-/* p {
-	text-align: center;
-} */
-/* Error messages (red color) */
-/* p[style*='color:red'] { */
-/* color: red;  */
-/* } */
-
-/* Success messages (green color) */
-/* p[style*='color:green'] { */
-/* color: green; */
-/* } */
-
 .registration-error-message {
 	color: red;
 	font-size: 0.9em;
@@ -566,6 +531,7 @@ Main Registration page styles === */
 /* 
 REGISTRATION SUCCESS 
 */
+
 /* This styles the container that shows the registration success message */
 .registration-success-container {
 	text-align: center; /* Centers the text inside the box */
@@ -656,8 +622,7 @@ REGISTRATION SUCCESS
 	background-color: #0050a0;
 }
 
-/* === 
-Event Summery styles === */
+/* === Event Summery styles === */
 
 /* Media query for screens with a maximum width of 768px (tablets and below) */
 @media only screen and (max-width: 768px) {
@@ -1059,7 +1024,6 @@ ul.social-icons-list {
 	}
 	.login-container {
 		width: 100%;
-		/* padding: 15px; */
 	}
 
 	.school-logo-text {
@@ -1077,9 +1041,3 @@ ul.social-icons-list {
 		font-size: 12px;
 	}
 }
-
-/* 
-Mobile DASHBOARD
-*/
-
-/* END */

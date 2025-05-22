@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
 <!-- Start of login form container -->
 
 <?php
+
 // Check if the 'the_custom_logo' function exists and a custom logo is set for the site
 if (function_exists('the_custom_logo') && has_custom_logo()) { ?>
   <!-- If a custom logo exists, display it inside a div with a class 'site_logo' -->
@@ -129,10 +130,6 @@ if (isset($_GET['login_error'])) {
   </div>
 </div>
 
-
-
-
-
 <!-- This JavaScript function toggles the visibility of the password -->
 <script>
   function togglePassword() {
@@ -145,5 +142,4 @@ if (isset($_GET['login_error'])) {
   }
 </script>
 
-<?php get_footer();
-?>
+<?php get_footer(); ?>

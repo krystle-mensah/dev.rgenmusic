@@ -25,12 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
       'nickname' => sanitize_text_field($_POST['nickname']),
     ]);
 
+    // Include media handling functions
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+
     // Handle profile picture upload
     if (!empty($_FILES['profile_picture']['name'])) {
-      require_once ABSPATH . 'wp-admin/includes/image.php';
-      require_once ABSPATH . 'wp-admin/includes/file.php';
-      require_once ABSPATH . 'wp-admin/includes/media.php';
-
       $file_type = wp_check_filetype($_FILES['profile_picture']['name']);
       $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
       $max_size = 5 * 1024 * 1024; // 5MB
@@ -41,7 +42,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
           update_user_meta($user_id, 'profile_picture', $uploaded);
         }
       } else {
-        echo '<p style="color:red;">Invalid file type or size. Upload JPEG/PNG/GIF under 5MB.</p>';
+        echo '<p style="color:red;">Invalid profile picture file type or size. Upload JPEG/PNG/GIF under 5MB.</p>';
+      }
+    }
+
+    // Handle cover photo upload
+    if (!empty($_FILES['cover_photo']['name'])) {
+      $file_type = wp_check_filetype($_FILES['cover_photo']['name']);
+      $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+      $max_size = 5 * 1024 * 1024; // 5MB
+
+      if (in_array($file_type['type'], $allowed_types) && $_FILES['cover_photo']['size'] <= $max_size) {
+        $uploaded = media_handle_upload('cover_photo', 0);
+        if (!is_wp_error($uploaded)) {
+          update_user_meta($user_id, 'cover_photo', $uploaded);
+        }
+      } else {
+        echo '<p style="color:red;">Invalid cover photo file type or size. Upload JPEG/PNG/GIF under 5MB.</p>';
       }
     }
 
@@ -57,9 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
 $first_name = get_user_meta($user_id, 'first_name', true);
 $last_name = get_user_meta($user_id, 'last_name', true);
 $nickname = get_user_meta($user_id, 'nickname', true);
+
 $profile_picture_id = get_user_meta($user_id, 'profile_picture', true);
 $profile_picture_url = $profile_picture_id ? wp_get_attachment_url($profile_picture_id) : '';
 
+$cover_photo_id = get_user_meta($user_id, 'cover_photo', true);
+$cover_photo_url = $cover_photo_id ? wp_get_attachment_url($cover_photo_id) : '';
 ?>
 
 <div class="container container--narrow page-section">
@@ -80,8 +100,15 @@ $profile_picture_url = $profile_picture_id ? wp_get_attachment_url($profile_pict
     <label for="profile_picture">Profile Picture:</label>
     <input type="file" name="profile_picture">
     <?php if ($profile_picture_url): ?>
-      <p>Current Picture:</p>
-      <img src="<?php echo esc_url($profile_picture_url); ?>" width="100" alt="Profile Picture">
+      <p>Current Profile Picture:</p>
+      <div><img src="<?php echo esc_url($profile_picture_url); ?>" width="100" alt="Profile Picture" title="<?php echo esc_attr($user_name); ?>'s Profile Picture"></div>     
+    <?php endif; ?>
+
+    <label for="cover_photo">Cover Photo:</label>
+    <input type="file" name="cover_photo">
+    <?php if ($cover_photo_url): ?>
+      <p>Current Cover Photo:</p>
+      <img src="<?php echo esc_url($cover_photo_url); ?>" width="300" alt="Cover Photo">
     <?php endif; ?>
 
     <br><br>
