@@ -226,67 +226,6 @@ add_action('after_setup_theme', 'rgen_hide_admin_bar');
 // add_action('template_redirect', 'rgen_secure_custom_login_access');
 
 // -----------------------------------------------------------------------------
-// REGISTRATION 
-
-//This tells WordPress how to interpret URLs like /login-key/some-token.
-function rgen_register_login_key_rewrite()
-{
-  add_rewrite_rule(
-    '^login-key/([^/]+)/?$',
-    'index.php?login_key_token=$matches[1]',
-    'top'
-  );
-}
-add_action('init', 'rgen_register_login_key_rewrite');
-
-//This lets WordPress recognize login_key_token as a valid variable.
-function rgen_add_query_vars($vars)
-{
-  $vars[] = 'login_key_token';
-  return $vars;
-}
-add_filter('query_vars', 'rgen_add_query_vars');
-
-//Intercept the Request and Handle Login
-function rgen_process_login_key_redirect()
-{
-  $token = get_query_var('login_key_token');
-
-  if ($token) {
-    global $wpdb;
-
-    $user_id = $wpdb->get_var(
-      $wpdb->prepare(
-        "SELECT user_id FROM $wpdb->usermeta WHERE meta_key = 'rgen_login_key' AND meta_value = %s",
-        $token
-      )
-    );
-
-    if ($user_id) {
-      $expires = get_user_meta($user_id, 'rgen_login_key_expires', true);
-      $current_time = time();
-
-      // Remove token regardless of expiration
-      delete_user_meta($user_id, 'rgen_login_key');
-      delete_user_meta($user_id, 'rgen_login_key_expires');
-
-      if ($expires && $current_time <= $expires) {
-        wp_set_auth_cookie($user_id, true); // Log in the user
-        wp_redirect(home_url('/profile'));
-        exit;
-      } else {
-        wp_redirect(home_url('/login?error=expired'));
-        exit;
-      }
-    } else {
-      wp_redirect(home_url('/login?error=invalid'));
-      exit;
-    }
-  }
-}
-
-
-
 // Brief
 
 // -----------------------------------------------------------------------------

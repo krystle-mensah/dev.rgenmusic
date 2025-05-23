@@ -103,28 +103,28 @@ body {
 
 .word-rotator {
 	z-index: 10;
-	height: 3em; /* Set the height for the container */
-	width: 100%; /* Ensure it stretches across its parent container */
+	height: 3em;
+	width: 100%;
 	position: relative;
 	display: flex;
-	align-items: center; /* Vertically center */
-	justify-content: center; /* Horizontally center */
-	margin: 0 auto; /* Ensure it's centered within its parent */
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 .word-rotator .word {
 	opacity: 0;
 	animation: fadeWords 6s infinite;
-	text-align: center; /* Center the text inside the word element */
-	position: absolute; /* Keep them in the same spot */
+	text-align: center;
+	position: absolute;
 }
 
 .word-rotator .word2 {
-	animation-delay: 2s; /* Delay for the second word */
+	animation-delay: 2s;
 }
 
 .word-rotator .word3 {
-	animation-delay: 4s; /* Delay for the third word */
+	animation-delay: 4s;
 }
 
 @keyframes fadeWords {
@@ -141,50 +141,69 @@ body {
 	}
 }
 
+/* === 404 page === */
+
+.error-404 {
+	text-align: center;
+	padding: 4rem 1rem;
+}
+
+.error-404 .page-title {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.error-404 .button {
+	background-color: #0068c2;
+	color: #fff;
+	padding: 0.75rem 1.5rem;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
 /* === Main Dashboard styles === */
 
-/* Base container styling */
 .dashboard-container {
-	max-width: 1000px; /* Limits the maximum width of the dashboard */
-	margin: 50px auto; /* Centers the container with top and bottom margin */
-	padding: 20px; /* Adds spacing inside the container */
-	background: #f8f9fa; /* Light gray background */
-	border-radius: 8px; /* Rounds the corners for a softer look */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-	text-align: center; /* Centers text inside the container */
+	max-width: 1000px;
+	margin: 50px auto;
+	padding: 20px;
+	background: #f8f9fa;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
 }
 
 /* Heading */
 .dashboard-container h1 {
-	font-size: 2rem; /* Sets a large font size for headings */
-	color: #0068c2; /* Uses the primary blue color */
-	margin-bottom: 15px; /* Adds space below the heading */
+	font-size: 2rem;
+	color: #0068c2;
+	margin-bottom: 15px;
 }
 
 /* Paragraph */
 .dashboard-container p {
-	font-size: 1.1rem; /* Slightly larger text for readability */
-	color: #333; /* Dark gray text for contrast */
-	margin-bottom: 20px; /* Adds space below the paragraph */
+	font-size: 1.1rem;
+	color: #333;
+	margin-bottom: 20px;
 }
 
 /* Dashboard menu */
 .dashboard-menu {
-	display: flex; /* Uses flexbox for layout */
-	justify-content: center; /* Centers menu items horizontally */
-	gap: 15px; /* Adds spacing between menu items */
-	margin-top: 20px; /* Adds space above the menu */
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-top: 20px;
 }
 
 /* Dashboard menu buttons */
 .dashboard-menu a {
-	display: inline-block; /* Makes buttons behave like block elements */
-	padding: 10px 20px; /* Adds padding for a clickable area */
-	background: #0068c2; /* Sets the primary blue background */
-	color: white; /* White text for contrast */
-	text-decoration: none; /* Removes underline from links */
-	border-radius: 5px; /* Slightly rounded corners */
-	transition: background 0.3s; /* Smooth transition effect */
+	display: inline-block;
+	padding: 10px 20px;
+	background: #0068c2;
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background 0.3s;
 }
 
 /* Hover effect */
@@ -202,42 +221,38 @@ body {
 }
 
 .profile-header {
-	/* Use flexbox to align the profile header elements */
 	display: flex;
-	/* Vertically center the items in the header */
+
 	align-items: center;
-	/* Space out the header items with margin */
+
 	justify-content: center;
-	/* Add space at the bottom of the header */
+
 	margin-bottom: 20px;
 }
 
 .profile-picture {
-	/* Center the profile picture */
 	text-align: center;
-	/* Add space to the right of the profile picture */
+
 	margin-right: 20px;
 }
 
 .profile-picture img {
-	/* Set the width and height of the profile image */
 	width: 120px;
 	height: 120px;
-	/* Make the profile picture circular */
+
 	border-radius: 50%;
-	/* Ensure the image fills the container without distortion */
+
 	object-fit: cover;
-	/* Add a blue border around the profile picture */
+
 	border: 2px solid #0068c2;
 }
 
 /* Profile Information */
 h3 {
-	/* Set font size for profile headings */
 	font-size: 1.5rem;
-	/* Add margin below the heading */
+
 	margin-bottom: 10px;
-	/* Set the color to the blue theme */
+
 	color: #0068c2;
 }
 
