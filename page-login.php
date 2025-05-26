@@ -36,8 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
 
   // Check if login was successful
   if (!is_wp_error($user)) {
-    // Redirect to profile page or the page user was trying to access
-    $redirect_url = home_url('index.php/profile/');
+    wp_set_current_user($user->ID);
+    wp_set_auth_cookie($user->ID, $remember);
+    // if the user is admin
+    if (user_can($user, 'administrator')) {
+      //then direct them to the admin area
+      wp_redirect(admin_url());
+    } else {
+      // then direct them there profile page.
+      $redirect_url = home_url('index.php/profile/');
+    }
+    exit;
+
     if (isset($_GET['redirect_to'])) {
       $redirect_url = esc_url($_GET['redirect_to']);
     }
@@ -87,7 +97,9 @@ if (isset($_GET['login_error'])) {
 
 <div class="page-banner">
 
-  <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/pageBanner.jpg') ?>);"></div>
+  <div class="page-banner__bg-image my-banner-bg-image">
+    <img src="<?php echo get_theme_file_uri('/images/pageBanner.jpg'); ?>" alt="Page banner background" loading="lazy">
+  </div>
   <div class="page-banner__content container container--narrow">
     <h1 class="page-banner__title"><?php the_title(); ?></h1>
     <div class="page-banner__intro">

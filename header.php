@@ -28,12 +28,13 @@
         </h1>
       <?php } ?>
 
-      <!-- <button
+      <!-- The below code is for mobile search -->
+      <button
         type="button"
-        class="js-search-trigger site-header__search-trigger"
+        class="js-search-trigger site-header__search-trigger mobile-search-icon"
         aria-label="Open search">
         <i class="fa fa-search" aria-hidden="true"></i>
-      </button> -->
+      </button>
 
       <!-- <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
       <!-- <button
@@ -43,7 +44,8 @@
         <i class="fa fa-bars" aria-hidden="true"></i>
       </button> -->
 
-      <!-- <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i> -->
+      <!-- Hamburger -->
+      <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
 
       <div class="site-header__menu group">
         <?php
@@ -88,12 +90,18 @@
 
         <?php } ?>
         <!-- <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
-        <!-- <button
+
+        <!-- desktop search -->
+
+
+
+
+        <button
           type="button"
-          class="search-trigger js-search-trigger"
+          class="search-trigger js-search-trigger desktop-search-icon"
           aria-label="Open search">
           <i class="fa fa-search" aria-hidden="true"></i>
-        </button> -->
+        </button>
       </div>
     </div>
   </header>

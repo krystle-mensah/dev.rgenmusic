@@ -30,6 +30,38 @@ body {
 	padding: 1.04% 0;
 	background-color: #000;
 }
+.my-banner-bg-image {
+	opacity: 0.55 !important;
+	top: auto !important;
+}
+/* .my-banner-bg-image img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+} */
+
+/* === Navigation styles === */
+
+.desktop-search-icon {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	top: 5px !important;
+}
+.desktop-search-icon:hover {
+	background-color: rgba(0, 0, 0, 0.1); /* subtle highlight */
+}
+.desktop-search-icon .fa-search {
+	font-size: 1.2rem; /* adjust size */
+	/* color: #0068c2; */
+	transition: color 0.3s ease;
+}
+/* .desktop-search-icon .fa-search {
+		darker shade for hover effect
+		color: #004a91;
+	} 
+		*/
 
 /* === Music Release page styles === */
 
@@ -870,10 +902,31 @@ REGISTRATION SUCCESS
 }
 
 @media (max-width: 768px) {
+	/* Mobile search icon media */
+	.mobile-search-icon {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+		top: 5px !important;
+	}
+	.mobile-search-icon:hover {
+		background-color: rgba(0, 0, 0, 0.1); /* subtle highlight */
+	}
+	.mobile-search-icon .fa-search {
+		font-size: 1.2rem; /* adjust size */
+		/* color: #0068c2; */
+		transition: color 0.3s ease;
+	}
+	/* .mobile-search-icon .fa-search {
+		 darker shade for hover effect
+		color: #004a91;
+	} */
+
 	/*media for header*/
 
 	.site-header {
-		z-index: 3;
+		/* z-index: 3; */
 		padding: 2.5% 0;
 	}
 
@@ -894,12 +947,18 @@ REGISTRATION SUCCESS
 		text-align: center;
 	}
 	.page-banner {
-		padding: 0;
+		padding: 60px 0 40px 0 !important;
 	}
 	.page-banner .page-banner__bg-image {
 		opacity: 0.5;
 	}
+
+	/* media for front page */
+	.main-title {
+		font-size: 3em;
+	}
 }
+
 .metabox {
 	display: block !important; /* Stack elements instead of inline */
 	padding: 8px 12px !important; /* Slightly reduce padding */
@@ -932,9 +991,9 @@ ul.social-icons-list {
 
 /* Front page media styles */
 
-.main-title {
+/* .main-title {
 	font-size: 3em;
-}
+} */
 
 .overlay-text {
 	top: 40%;

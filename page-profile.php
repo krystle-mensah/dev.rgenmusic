@@ -27,7 +27,9 @@ while (have_posts()) {
     $cover_photo_id = get_user_meta($user_id, 'cover_photo', true);
     $cover_photo_url = $cover_photo_id ? wp_get_attachment_url($cover_photo_id) : get_theme_file_uri('/images/pageBanner.jpg');
     ?>
-    <div class="page-banner__bg-image cover-photo" style="background-image: url('<?php echo esc_url($cover_photo_url); ?>');"></div>
+    <div class="page-banner__bg-image my-banner-bg-image">
+      <img src="<?php echo get_theme_file_uri('/images/pageBanner.jpg'); ?>" alt="Page banner background" loading="lazy">
+    </div>
 
     <div class="page-banner__content container container--narrow">
       <h1 class="page-banner__title"><?php the_title(); ?></h1>

@@ -1,3 +1,4 @@
+// I have check this page
 class MobileMenu {
   constructor() {
     this.menu = document.querySelector(".site-header__menu")
