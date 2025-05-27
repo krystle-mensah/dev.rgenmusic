@@ -29,12 +29,12 @@
       <?php } ?>
 
       <!-- The below code is for mobile search -->
-      <button
+      <!-- <button
         type="button"
         class="js-search-trigger site-header__search-trigger mobile-search-icon"
         aria-label="Open search">
         <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
+      </button> -->
 
       <!-- <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
       <!-- <button
@@ -92,16 +92,12 @@
         <!-- <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span> -->
 
         <!-- desktop search -->
-
-
-
-
-        <button
+        <!-- <button
           type="button"
           class="search-trigger js-search-trigger desktop-search-icon"
           aria-label="Open search">
           <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
+        </button> -->
       </div>
     </div>
   </header>

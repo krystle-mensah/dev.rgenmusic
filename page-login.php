@@ -36,21 +36,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login_user"])) {
 
   // Check if login was successful
   if (!is_wp_error($user)) {
+
     wp_set_current_user($user->ID);
     wp_set_auth_cookie($user->ID, $remember);
-    // if the user is admin
-    if (user_can($user, 'administrator')) {
-      //then direct them to the admin area
-      wp_redirect(admin_url());
-    } else {
-      // then direct them there profile page.
-      $redirect_url = home_url('index.php/profile/');
-    }
-    exit;
 
+    // Default redirect URL. this is the url for all users
+    $redirect_url = home_url('index.php/profile/');
+
+    // Admins go to dashboard
+    if (user_can($user, 'administrator')) {
+      $redirect_url = admin_url();
+    }
+
+    // If a redirect URL is passed via GET (e.g., after password reset), use it
     if (isset($_GET['redirect_to'])) {
       $redirect_url = esc_url($_GET['redirect_to']);
     }
+
     wp_safe_redirect($redirect_url); // Safe redirect to the URL
     exit;
   } else {
