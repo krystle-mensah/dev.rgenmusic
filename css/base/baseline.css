@@ -1,0 +1,30 @@
+body {
+	color: #333;
+	font-family: 'Roboto', sans-serif;
+	overflow-x: hidden;
+	position: relative;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: #0068c2; /* ← Replace with actual value of $mainBlue */
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+p,
+ul,
+ol {
+	margin: 0 0 1.65em 0;
+}
+
+p,
+li {
+	line-height: 1.65;
+}
