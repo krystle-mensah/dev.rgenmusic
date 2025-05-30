@@ -277,3 +277,9 @@ add_action('transition_post_status', 'notify_user_brief_published', 10, 3);
 //   return esc_url(site_url('/'));
 // }
 // add_filter('login_headerurl', 'ourHeaderUrl');
+
+// ACF frontend forms
+
+//if (function_exists('acf_form_head')) {
+  //add_action('wp_head', 'acf_form_head', 1);
+//}
