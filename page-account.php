@@ -80,8 +80,6 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] && isset($_POST['account_form_submitte
         error_log(print_r($user_id->get_error_messages(), true));
         $errors[] = esc_html__('There was an error updating your account.', 'devrgenmusic');
       } else {
-        $success = esc_html__('Account updated successfully.', 'devrgenmusic');
-
         // Send notifications if email changed
         if ($current_email !== $email) {
           $site_name = get_bloginfo('name');
@@ -109,7 +107,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD'] && isset($_POST['account_form_submitte
         }
 
         // Redirect to avoid resubmission
-        wp_safe_redirect(esc_url(get_permalink()));
+        wp_safe_redirect(add_query_arg('updated', 'true', get_permalink()));
         exit;
       }
     }
@@ -126,28 +124,30 @@ $last_name = get_user_meta($current_user_id, 'last_name', true);
 ?>
 
 <!-- Page Banner -->
-<div class="page-banner">
-  <div class="page-banner__bg-image my-banner-bg-image">
-    <img src="<?php echo esc_url(get_theme_file_uri('/images/pageBanner.jpg')); ?>" alt="<?php echo esc_attr__('Page banner background', 'devrgenmusic'); ?>" loading="lazy">
-  </div>
+<!-- <div class="page-banner"> -->
+<div class="page-banner__bg-image my-banner-bg-image">
 
-  <div class="page-banner__content container container--narrow">
-    <h1 class="page-banner__title"><?php echo esc_html(get_the_title()); ?></h1>
-    <div class="page-banner__intro">
-      <!-- Optional intro content -->
-    </div>
+  <!-- <img src="<?php echo esc_url(get_theme_file_uri('/images/pageBanner.jpg')); ?>" alt="<?php echo esc_attr__('Page banner background', 'devrgenmusic'); ?>" loading="lazy"> -->
+
+</div>
+
+<div class="page-banner__content container container--narrow">
+  <h1 class="page-banner__title"><?php echo esc_html(get_the_title()); ?></h1>
+  <div class="page-banner__intro">
+    <!-- Optional intro content -->
   </div>
 </div>
+<!-- </div> -->
 
 <!-- Account Form Section -->
 <div class="container container--narrow page-section">
-  <div class="account-page-content generic-content">
+  <div class="account-page-content">
 
     <!-- Success or error message -->
-    <?php if ($success): ?>
-      <div class="notice success"><?php echo esc_html($success); ?></div>
+    <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true'): ?>
+      <div class="account-notice-success"><?php esc_html_e('Account updated successfully.', 'devrgenmusic'); ?></div>
     <?php elseif (!empty($errors)): ?>
-      <div class="notice error">
+      <div class="acoount-notice-error">
         <?php foreach ($errors as $error) : ?>
           <p><?php echo esc_html($error); ?></p>
         <?php endforeach; ?>
@@ -155,41 +155,47 @@ $last_name = get_user_meta($current_user_id, 'last_name', true);
     <?php endif; ?>
 
     <!-- Account Update Form -->
-    <form method="post" class="acf-account-form" novalidate>
+    <form method="post" class="acf-account-form form-container" novalidate>
       <?php wp_nonce_field('update_account', 'account_form_nonce'); ?>
       <input type="hidden" name="account_form_submitted" value="1" />
 
       <div class="acf-form-fields">
-        <p>
-          <label for="user_email"><?php esc_html_e('Email', 'devrgenmusic'); ?></label><br>
-          <input type="email" name="user_email" id="user_email" value="<?php echo esc_attr($email); ?>" required />
-        </p>
 
-        <p>
-          <label for="first_name"><?php esc_html_e('First Name', 'devrgenmusic'); ?></label><br>
-          <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($first_name); ?>" />
-        </p>
+        <div class="form-group">
+          <label for="user_email" class="form-label"><?php esc_html_e('Email', 'devrgenmusic'); ?></label>
+          <input type="email" name="user_email" id="user_email" value="<?php echo esc_attr($email); ?>" required class="form-input" />
+        </div>
 
-        <p>
-          <label for="last_name"><?php esc_html_e('Last Name', 'devrgenmusic'); ?></label><br>
-          <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($last_name); ?>" />
-        </p>
+        <div class="form-group">
+          <label for="first_name" class="form-label"><?php esc_html_e('First Name', 'devrgenmusic'); ?></label>
+          <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($first_name); ?>" class="form-input" />
+        </div>
 
-        <p>
-          <label for="user_pass"><?php esc_html_e('New Password', 'devrgenmusic'); ?></label><br>
-          <input type="password" name="user_pass" id="user_pass" value="" autocomplete="new-password" />
-        </p>
+        <div class="form-group">
+          <label for="last_name" class="form-label"><?php esc_html_e('Last Name', 'devrgenmusic'); ?></label>
+          <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($last_name); ?>" class="form-input" />
+        </div>
 
-        <p>
-          <label for="register_confirm_password"><?php esc_html_e('Confirm Password', 'devrgenmusic'); ?></label><br>
-          <input type="password" name="register_confirm_password" id="register_confirm_password" value="" autocomplete="new-password" />
-        </p>
+        <div class="form-group">
+          <label for="user_pass" class="form-label"><?php esc_html_e('New Password', 'devrgenmusic'); ?></label>
+          <input type="password" name="user_pass" id="user_pass" value="" autocomplete="new-password" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="register_confirm_password" class="form-label"><?php esc_html_e('Confirm Password', 'devrgenmusic'); ?></label>
+          <input type="password" name="register_confirm_password" id="register_confirm_password" value="" autocomplete="new-password" class="form-input" />
+        </div>
+
       </div>
 
-      <p>
-        <button type="submit"><?php esc_html_e('Update Account', 'devrgenmusic'); ?></button>
-      </p>
+      <div class="form-actions">
+        <button type="submit" class="form-button">
+          <?php esc_html_e('Update Account', 'devrgenmusic'); ?>
+        </button>
+      </div>
     </form>
+
+
   </div>
 </div>
 
