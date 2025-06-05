@@ -140,7 +140,7 @@ $last_name = get_user_meta($current_user_id, 'last_name', true);
 <!-- </div> -->
 
 <!-- Account Form Section -->
-<div class="container container--narrow page-section">
+<div class="page-section">
   <div class="account-page-content">
 
     <!-- Success or error message -->
@@ -168,12 +168,12 @@ $last_name = get_user_meta($current_user_id, 'last_name', true);
 
         <div class="form-group">
           <label for="first_name" class="form-label"><?php esc_html_e('First Name', 'devrgenmusic'); ?></label>
-          <input type="text" name="first_name" id="first_name" value="<?php echo esc_attr($first_name); ?>" class="form-input" />
+          <input type="text" name="first_name" id="first_name" autocomplete="given-name" value="<?php echo esc_attr($first_name); ?>" class="form-input" />
         </div>
 
         <div class="form-group">
           <label for="last_name" class="form-label"><?php esc_html_e('Last Name', 'devrgenmusic'); ?></label>
-          <input type="text" name="last_name" id="last_name" value="<?php echo esc_attr($last_name); ?>" class="form-input" />
+          <input type="text" name="last_name" id="last_name" autocomplete="family-name" value="<?php echo esc_attr($last_name); ?>" class="form-input" />
         </div>
 
         <div class="form-group">
