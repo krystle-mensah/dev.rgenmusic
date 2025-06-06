@@ -124,20 +124,20 @@ $last_name = get_user_meta($current_user_id, 'last_name', true);
 ?>
 
 <!-- Page Banner -->
-<!-- <div class="page-banner"> -->
-<div class="page-banner__bg-image my-banner-bg-image">
+<div class="page-banner">
+  <div class="page-banner__bg-image my-banner-bg-image">
 
-  <!-- <img src="<?php echo esc_url(get_theme_file_uri('/images/pageBanner.jpg')); ?>" alt="<?php echo esc_attr__('Page banner background', 'devrgenmusic'); ?>" loading="lazy"> -->
+    <img src="<?php echo esc_url(get_theme_file_uri('/images/pageBanner.jpg')); ?>" alt="<?php echo esc_attr__('Page banner background', 'devrgenmusic'); ?>" loading="lazy">
 
-</div>
+  </div>
 
-<div class="page-banner__content container container--narrow">
-  <h1 class="page-banner__title"><?php echo esc_html(get_the_title()); ?></h1>
-  <div class="page-banner__intro">
-    <!-- Optional intro content -->
+  <div class="page-banner__content container container--narrow">
+    <h1 class="page-banner__title"><?php echo esc_html(get_the_title()); ?></h1>
+    <div class="page-banner__intro">
+      <!-- Optional intro content -->
+    </div>
   </div>
 </div>
-<!-- </div> -->
 
 <!-- Account Form Section -->
 <div class="page-section">

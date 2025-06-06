@@ -242,12 +242,12 @@ textarea:focus {
 .account-notice-success,
 .acoount-notice-error {
 	padding: 1rem 1.25rem;
-	border-radius: 0.5rem;
+	/* border-radius: 0.5rem; */
 	margin-bottom: 1.5rem;
 	font-size: 0.95rem;
 	line-height: 1.5;
 }
-
+/* you this for all notices */
 .account-notice-success {
 	background-color: #e6f4ea;
 	border: 1px solid #4caf50;
@@ -268,8 +268,8 @@ textarea:focus {
 .acf-account-form.form-container {
 	background-color: #ffffff;
 	padding: 2rem;
-	border-radius: 0.75rem;
-	border: 1px solid #e0e0e0;
+	/* border-radius: 0.75rem; */
+	/* border: 1px solid #e0e0e0; */
 	max-width: 600px;
 	margin: 0 auto;
 }
