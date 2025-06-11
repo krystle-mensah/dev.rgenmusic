@@ -61,7 +61,7 @@
           $menu = str_replace('<nav', '<nav role="navigation" aria-label="Main Navigation"', $menu);
           echo $menu;
         ?>
-          <a href="<?php echo esc_url(wp_logout_url()); ?>" class="btn btn--small btn--orange float-left btn--with-photo">
+          <a href="<?php echo esc_url(wp_logout_url(site_url('/'))); ?>" class="btn btn--small btn--orange float-left btn--with-photo">
             <span class="btn__text">Log Out</span>
           </a>
         <?php } else {

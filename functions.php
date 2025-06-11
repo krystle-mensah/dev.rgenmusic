@@ -281,5 +281,15 @@ add_action('transition_post_status', 'notify_user_brief_published', 10, 3);
 // ACF frontend forms
 
 //if (function_exists('acf_form_head')) {
-  //add_action('wp_head', 'acf_form_head', 1);
+//add_action('wp_head', 'acf_form_head', 1);
 //}
+
+//not sure about this
+// function rgen_disable_cache_for_logged_in_users()
+// {
+//   if (is_user_logged_in()) {
+//     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+//     header("Pragma: no-cache");
+//   }
+// }
+// add_action('send_headers', 'rgen_disable_cache_for_logged_in_users');
